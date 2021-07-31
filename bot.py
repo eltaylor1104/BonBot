@@ -52,8 +52,8 @@ async def embed(inter, title=None, description=None, color=None):
     emb = discord.Embed(color=color)
     if title is not None:
         emb.title = title
-    if desc is not None:
-        emb.description = desc
+    if description is not None:
+        emb.description = description
     # Sending the output
     await inter.reply(embed=emb, hide_user_input=True)
 
