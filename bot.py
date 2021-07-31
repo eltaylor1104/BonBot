@@ -66,7 +66,7 @@ async def ping(ctx): # Defines a new "context" (ctx) command called "ping."
 
 
 
-@slashes.command(
+@slash.command(
     guild_ids=test_ids,
     name="user-info",
     description="Shows user's profile",
@@ -87,7 +87,7 @@ async def user_info(ctx, user=None):
     emb.set_thumbnail(url=user.avatar_url)
     await ctx.send(embed=emb)
 
-@slashes.command(name="invite", description="Sends my invite!")
+@slash.command(name="invite", description="Sends my invite!")
 async def invite(ctx):
     await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands")
 
