@@ -89,7 +89,7 @@ async def user_info(ctx, user=None):
 
 @slash.command(name="invite", description="Sends my invite!")
 async def invite(ctx):
-    await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands")
+    await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands", epheremal=True)
 
 
 
