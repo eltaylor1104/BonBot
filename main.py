@@ -55,7 +55,7 @@ async def embed(inter, title=None, description=None, color=None):
     if description is not None:
         emb.description = description
     # Sending the output
-    await inter.reply(embed=emb, hide_user_input=True)
+    await inter.create_response(embed=emb, hide_user_input=True)
 
 
 
@@ -83,6 +83,7 @@ async def user_info(ctx, user=None):
     emb.description = (
         f"**Created at:** `{user.created_at}`\n"
         f"**ID:** `{user.id}`"
+        f"**Joined server at:** ("
     )
     emb.set_thumbnail(url=user.avatar_url)
     await ctx.send(embed=emb)
@@ -91,7 +92,23 @@ async def user_info(ctx, user=None):
 async def invite(ctx):
     await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands", epheremal=True)
 
+@slash.command(name="ban", description="Ban a user", options=[
+    Option("user", "Specify a user to ban.", type.USER, required=True),
+    Option("reason", "specify a reason", type.STRING, required=False)
+    ])
+@slash_commands.has_guild_permissions(ban_members=True)
+async def ban(ctx, user, reason):
+    await user.ban(reason = reason)
+    await ctx.send(f"{user} has been banned.", epheremal=True)
 
+@slash.command(name="kick", description="Kick a user", options=[
+    Option("user", "Specify a user to kick.", type.USER, required=True),
+    Option("reason", "specify a reason", type.STRING, required=False)
+    ])
+@slash_commands.has_guild_permissions(ban_members=True)
+async def kick(ctx, user, reason):
+    await user.kick(reason = reason)
+    await ctx.send(f"{user} has been banned.", epheremal=True)
 
 
 
