@@ -100,4 +100,6 @@ async def kick(ctx, user, reason = None):
 async def echo (ctx, channel, message):
     await channel.send(f"{message}")
     await ctx.send(f"Message has been sent to {channel}", ephemeral=True)
+
+bot.load_extension('cogs.Slash')
 bot.run(DISCORDTOKEN)
