@@ -91,7 +91,7 @@ async def user_info(ctx, user=None):
 @slash.command(name="invite", 
 guild_ids=test_ids, description="Sends my invite!")
 async def invite(ctx):
-    await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands", epheremal=True)
+    await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands", ephemeral=True)
 
 @slash.command(name="ban", guild_ids=test_ids, description="Ban a user", options=[
     Option("user", "Specify a user to ban.", Type.USER, required=True),
