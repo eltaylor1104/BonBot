@@ -19,7 +19,6 @@ DISCORDTOKEN = os.getenv('TOKEN')
 async def on_ready(): 
 	print("Bot is online.")
 
-
 @slash.command(
 	guild_ids=test_ids,
 	description="Builds a custom embed",

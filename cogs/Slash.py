@@ -8,13 +8,14 @@ class Slash(commands.Cog):
         self.bot = bot
 
 
+    # reply to message cmd
+    @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", guild_ids=test_ids, 
+    options=[Option("ID", "A message ID for me to reply to", type.INTEGER, required=True), Option("message", "The content of the reply", type.STRING, required=True)])
+    async def reply(self, ctx, ID, message):
+        await ID.send(f"{message}")
+        await ctx.send("Message has been sent!", ephemeral=True)
 
-    # Example of a slash command in a cog
-    @slash_commands.command(description="Says Hello")
-    async def hello(self, ctx):
-        await ctx.send("Hello from cog!")
-
-    @slash_commands.command(name="rickroll", description="Countdown to a rickroll!", guild_ids=test_ids, options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER)])
+    @slash_commands.command(name="rickroll", description="Countdown to a rickroll!", guild_ids=test_ids, options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER, required=True)])
     async def countdown_to_rickroll(self, ctx, time:int):
         if time > 1000:
             await ctx.send("Nah. Too long.")
