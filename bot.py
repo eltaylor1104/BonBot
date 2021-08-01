@@ -1,12 +1,9 @@
 import discord
 import os
-from dotenv import load_dotenv
-load_dotenv()
 from discord.ext import commands
 from dislash import *
-
-
-
+from dotenv import load_dotenv
+load_dotenv()
 
 
 bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
@@ -14,17 +11,12 @@ slash = SlashClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
 
+
 DISCORDTOKEN = os.getenv('TOKEN')
 
 @bot.event
 async def on_ready(): 
     print("Bot is online.")
-
-
-
-
-
-
 
 
 @slash.command(
@@ -111,12 +103,24 @@ async def kick(ctx, user, reason = None):
     await user.kick(reason = reason)
     await ctx.create_response(f"{user} has been kicked.", ephemeral=True)
 
-
-
-
-
-
-
-
+@slash.command(name="echo", guild_ids=test_ids, description="Post a message in another channel", options=[
+    Option("channel", "select a channel for me to post a message in", Type.CHANNEL, required=True),
+    Option("message", "Giv eme a message to relay in the channel", Type.STRING, required=True)])
 
 bot.run(DISCORDTOKEN)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
