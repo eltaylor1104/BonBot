@@ -10,7 +10,7 @@ class Slash(commands.Cog):
 
     # reply to message cmd
     @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", guild_ids=test_ids, 
-    options=[Option("ID", "A message ID for me to reply to", type.INTEGER, required=True), Option("message", "The content of the reply", type.STRING, required=True)])
+    options=[Option("ID", "A message ID for me to reply to", Type.INTEGER, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
     async def reply(self, ctx, ID, message):
         await ID.send(f"{message}")
         await ctx.send("Message has been sent!", ephemeral=True)
