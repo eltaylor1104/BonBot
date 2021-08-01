@@ -98,18 +98,18 @@ async def invite(ctx):
     Option("reason", "specify a reason", Type.STRING, required=False)
     ])
 @slash_commands.has_guild_permissions(ban_members=True)
-async def ban(ctx, user, reason):
+async def ban(ctx, user, reason = None):
     await user.ban(reason = reason)
-    await ctx.send(f"{user} has been banned.", epheremal=True)
+    await ctx.create_response(f"{user} has been banned.", epheremal=True)
 
 @slash.command(name="kick", guild_ids=test_ids, description="Kick a user", options=[
     Option("user", "Specify a user to kick.", Type.USER, required=True),
     Option("reason", "specify a reason", Type.STRING, required=False)
     ])
 @slash_commands.has_guild_permissions(ban_members=True)
-async def kick(ctx, user, reason):
+async def kick(ctx, user, reason = None):
     await user.kick(reason = reason)
-    await ctx.send(f"{user} has been banned.", epheremal=True)
+    await ctx.create_response(f"{user} has been banned.", epheremal=True)
 
 
 
