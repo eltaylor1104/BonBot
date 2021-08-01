@@ -109,7 +109,7 @@ async def ban(ctx, user, reason = None):
 @slash_commands.has_guild_permissions(ban_members=True)
 async def kick(ctx, user, reason = None):
     await user.kick(reason = reason)
-    await ctx.create_response(f"{user} has been banned.", ephemeral=True)
+    await ctx.create_response(f"{user} has been kicked.", ephemeral=True)
 
 
 
