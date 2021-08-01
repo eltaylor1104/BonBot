@@ -93,8 +93,8 @@ async def invite(ctx):
     await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands", epheremal=True)
 
 @slash.command(name="ban", description="Ban a user", options=[
-    Option("user", "Specify a user to ban.", type.USER, required=True),
-    Option("reason", "specify a reason", type.STRING, required=False)
+    Option("user", "Specify a user to ban.", Type.USER, required=True),
+    Option("reason", "specify a reason", Type.STRING, required=False)
     ])
 @slash_commands.has_guild_permissions(ban_members=True)
 async def ban(ctx, user, reason):
@@ -102,8 +102,8 @@ async def ban(ctx, user, reason):
     await ctx.send(f"{user} has been banned.", epheremal=True)
 
 @slash.command(name="kick", description="Kick a user", options=[
-    Option("user", "Specify a user to kick.", type.USER, required=True),
-    Option("reason", "specify a reason", type.STRING, required=False)
+    Option("user", "Specify a user to kick.", Type.USER, required=True),
+    Option("reason", "specify a reason", Type.STRING, required=False)
     ])
 @slash_commands.has_guild_permissions(ban_members=True)
 async def kick(ctx, user, reason):
