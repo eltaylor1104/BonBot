@@ -1,5 +1,6 @@
 from discord.ext import commands
 from dislash import *
+import asyncio
 
 test_ids = [804935799316676629] # Put your server ID in this array
 class Slash(commands.Cog):
