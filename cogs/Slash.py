@@ -1,3 +1,6 @@
+from discord.ext import commands
+from dislash import *
+
 test_ids = [804935799316676629] # Put your server ID in this array
 class Slash(commands.Cog):
     def __init__(self, bot):
