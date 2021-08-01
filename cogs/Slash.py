@@ -14,8 +14,7 @@ class Slash(commands.Cog):
         await ctx.send("Hello from cog!")
 
     @slash_commands.command(name="rickroll", description="Countdown to a rickroll!", guild_ids=test_ids, options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER)])
-    async def countdown_to_rickroll(ctx, time:int):
-        await ctx.message.delete()
+    async def countdown_to_rickroll(self, ctx, time:int):
         if time > 1000:
             await ctx.send("Nah. Too long.")
             return
