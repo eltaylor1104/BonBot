@@ -88,11 +88,12 @@ async def user_info(ctx, user=None):
     emb.set_thumbnail(url=user.avatar_url)
     await ctx.send(embed=emb)
 
-@slash.command(name="invite", description="Sends my invite!")
+@slash.command(name="invite", 
+guild_ids=test_ids, description="Sends my invite!")
 async def invite(ctx):
     await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands", epheremal=True)
 
-@slash.command(name="ban", description="Ban a user", options=[
+@slash.command(name="ban", guild_ids=test_ids, description="Ban a user", options=[
     Option("user", "Specify a user to ban.", Type.USER, required=True),
     Option("reason", "specify a reason", Type.STRING, required=False)
     ])
@@ -101,7 +102,7 @@ async def ban(ctx, user, reason):
     await user.ban(reason = reason)
     await ctx.send(f"{user} has been banned.", epheremal=True)
 
-@slash.command(name="kick", description="Kick a user", options=[
+@slash.command(name="kick", guild_ids=test_ids, description="Kick a user", options=[
     Option("user", "Specify a user to kick.", Type.USER, required=True),
     Option("reason", "specify a reason", Type.STRING, required=False)
     ])
