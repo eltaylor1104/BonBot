@@ -106,7 +106,7 @@ async def ban(ctx, user, reason = None):
     Option("user", "Specify a user to kick.", Type.USER, required=True),
     Option("reason", "specify a reason", Type.STRING, required=False)
     ])
-@slash_commands.has_guild_permissions(ban_members=True)
+@slash_commands.has_guild_permissions(kick_members=True)
 async def kick(ctx, user, reason = None):
     await user.kick(reason = reason)
     await ctx.create_response(f"{user} has been kicked.", ephemeral=True)
