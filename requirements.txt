@@ -2,3 +2,4 @@ discord.py
 dislash.py
 python-dotenv
 asyncio
+jishaku
