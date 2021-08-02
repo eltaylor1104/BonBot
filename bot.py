@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 import discord
 import os
 import dislash
+import jishaku
 load_dotenv()
 
 
