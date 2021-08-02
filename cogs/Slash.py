@@ -11,9 +11,9 @@ class Slash(commands.Cog):
 
     # reply to message cmd
     @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", guild_ids=test_ids, 
-    options=[Option("id", "A message ID for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
-    async def reply(self, ctx, id: discord.MessageConverter, message):
-        await id.reply(f"{message}")
+    options=[Option("link", "A message link for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
+    async def reply(self, ctx, link: commands.MessageConverter, message):
+        await link.reply(f"{message}")
         await ctx.send("Message has been sent!", ephemeral=True)
 
     @slash_commands.command(name="rickroll", description="Countdown to a rickroll!", guild_ids=test_ids, options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER, required=True)])
