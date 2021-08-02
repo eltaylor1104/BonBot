@@ -36,6 +36,14 @@ class Slash(commands.Cog):
             await one.edit(content=f"Rickrolling you in {count}")
         await one.edit(content="https://youtu.be/dQw4w9WgXcQ")
 
+    @slash_commands.command(name="react", description="makes me react to an existing message using the ID or message link.", guild_ids=test_ids, 
+    options=[Option("link", "A message link or id for me to reply to", Type.STRING, required=True), Option("reaction", "The reaction to be added", Type.STRING, required=True)])
+    async def addreaction(self, ctx, link, reaction):
+        c = commands.MessageConverter() # create instance
+        mseglink = await c.convert(ctx, link) 
+        await mseglink.add_reaction(f"{reaction}")
+        await ctx.send("The reaction was added!", ephemeral=True)
+
 
 
 def setup(bot):
