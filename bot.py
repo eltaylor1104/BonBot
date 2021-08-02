@@ -21,9 +21,6 @@ DISCORDTOKEN = os.getenv('TOKEN')
 async def on_ready(): 
 	print("Bot is online.")
 
-@bot.command()
-async def ping(ctx): # Defines a new "context" (ctx) command called "ping."
-	await ctx.send(f"Pong! 🏓 ({bot.latency*1000}ms)")
 
 @bot.command(name="update")
 @commands.is_owner()

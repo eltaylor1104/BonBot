@@ -5,7 +5,10 @@ from discord.ext import commands
 from dislash import *
 from jishaku.codeblocks import Codeblock, codeblock_converter
 
+bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
+slash = SlashClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
+
 class utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
