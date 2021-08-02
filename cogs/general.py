@@ -11,7 +11,7 @@ slash = SlashClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
 
-class mod(commands.Cog):
+class general(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
@@ -38,4 +38,4 @@ class mod(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(mod(bot))
+    bot.add_cog(general(bot)(bot))
