@@ -11,7 +11,7 @@ class Slash(commands.Cog):
     # reply to message cmd
     @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", guild_ids=test_ids, 
     options=[Option("id", "A message ID for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
-    async def reply(self, ctx, id, message):
+    async def reply(self, ctx, id: discord.Message, message):
         await id.reply(f"{message}")
         await ctx.send("Message has been sent!", ephemeral=True)
 
