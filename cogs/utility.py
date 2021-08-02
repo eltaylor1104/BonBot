@@ -46,25 +46,7 @@ class utility(commands.Cog):
         await mseglink.add_reaction(f"{reaction}")
         await ctx.send("The reaction was added!", ephemeral=True)
 
-    @commands.command(name="update")
-    @commands.is_owner()
-    async def botupdate(self, ctx):
-        updatecommand = self.bot.get_command("jsk git")
-        await updatecommand(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
-        await self.bot.unload_extension('mod')
-        await self.bot.load_extension('mod')
-        await self.bot.unload_extension('utility')
-        await self.bot.load_extension('utility')
 
-    @slash_commands.command(name="update", decription="owner only!", guild_ids=test_ids)
-    @slash_commands.is_owner()
-    async def botupdate(self, ctx):
-        updatecmd = self.bot.get_command("jsk git")
-        await updatecmd(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
-        await self.bot.unload_extension('mod')
-        await self.bot.load_extension('mod')
-        await self.bot.unload_extension('utility')
-        await self.bot.load_extension('utility')
 
 
 def setup(bot):
