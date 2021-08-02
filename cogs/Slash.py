@@ -14,7 +14,7 @@ class Slash(commands.Cog):
     options=[Option("link", "A message link for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
     async def reply(self, ctx, link: str, message):
         message = commands.MessageConverter.convert(ctx, link)
-        await link.reply(f"{message}")
+        await link.reply(ctx, f"{message}")
         await ctx.send("Message has been sent!", ephemeral=True)
 
     @slash_commands.command(name="rickroll", description="Countdown to a rickroll!", guild_ids=test_ids, options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER, required=True)])
