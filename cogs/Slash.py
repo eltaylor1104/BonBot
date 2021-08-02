@@ -22,7 +22,7 @@ class Slash(commands.Cog):
     #@commands.command()
     #async def replycmd(self, ctx, link: discord.Message, message):
         #await link.reply(f"{message}")
-
+#TODO add permissions do only manage messages can use
     @slash_commands.command(name="rickroll", description="Countdown to a rickroll!", guild_ids=test_ids, options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER, required=True)])
     async def countdown_to_rickroll(self, ctx, time:int):
         if time > 1000:
