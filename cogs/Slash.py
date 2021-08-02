@@ -15,7 +15,7 @@ class Slash(commands.Cog):
     options=[Option("link", "A message link for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
     async def replycmd(self, ctx, link, message):
         c = commands.MessageConverter() # create instance
-        await c.convert(ctx, link) 
+        msglink = await c.convert(ctx, link) 
         await msglink.reply(f"{message}")
         await ctx.send("The message was sent!", ephemeral=True)
 
