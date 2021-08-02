@@ -101,9 +101,6 @@ class mod(commands.Cog):
     async def ping(self, ctx): # Defines a new "context" (ctx) command called "ping."
         await ctx.send(f"Pong! ({self.bot.latency*1000}ms)")
 
-    @slash_commands.command()
-    async def hello(self, ctx):
-        await ctx.send("Yo dawg")
 
 
 
