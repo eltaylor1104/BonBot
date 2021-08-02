@@ -46,8 +46,8 @@ class Slash(commands.Cog):
         await mseglink.add_reaction(f"{reaction}")
         await ctx.send("The reaction was added!", ephemeral=True)
 
-    @slash_commands.command(name="update")
-    @slash_commands.is_owner()
+    @commands.command(name="update")
+    @commands.is_owner()
     async def botupdate(self, ctx):
         jsk = self.bot.get_command("jsk git")
         await jsk(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
