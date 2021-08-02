@@ -29,6 +29,15 @@ class mod(commands.Cog):
             await one.edit(content=f"Rickrolling you in {count}")
         await one.edit(content="https://youtu.be/dQw4w9WgXcQ")
 
+    @commands.command()
+    async def memegen(self, ctx, name:str, line1:str, line2:str):
+        """Run dh.memelist of the list of memes. Example: dh.memegen snek \"No booper\" \"do NOT!\""""
+        def escape_literals(url):
+            return url.replace("-", "--").replace("_", "__").replace("?", "~q").replace(" ", "%20").replace("''", "\"")
+        url = "https://memegen.link/{}/{}/{}.jpg".format(name, escape_literals(line1), escape_literals(line2))
+        file = url_to_bytes(url)
+        await ctx.send(file=discord.File(file["content"], file["filename"]))
+
 
 
 
