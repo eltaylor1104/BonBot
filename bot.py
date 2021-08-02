@@ -32,7 +32,7 @@ async def update(ctx):
 	await bot.unload_extension('utility')
 	await bot.load_extension('utility')
 
-bot.load_extension('cogs.utility')
+bot.load_extension('cogs.mod')
 bot.load_extension('jishaku')
-bot.load_extension('util')
+bot.load_extension('cogs.util')
 bot.run(DISCORDTOKEN)
