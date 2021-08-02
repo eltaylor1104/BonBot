@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 from dislash import *
 import asyncio
+from discord.ext.commands import MessageConverter
 
 test_ids = [804935799316676629] # Put your server ID in this array
 class Slash(commands.Cog):
@@ -13,7 +14,7 @@ class Slash(commands.Cog):
     @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", guild_ids=test_ids, 
     options=[Option("link", "A message link for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
     async def replycmd(self, ctx, link, message):
-        msglink = MessageConverter().convert(ctx, link)
+        MessageConverter().convert(ctx, link)
         await msglink.reply(f"{message}")
 
     @commands.command()
