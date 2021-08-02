@@ -23,22 +23,7 @@ class utility(commands.Cog):
         await msglink.reply(f"{message}")
         await ctx.send("The message was sent!", ephemeral=True)
 
-    #@commands.command()
-    #async def replycmd(self, ctx, link: discord.Message, message):
-        #await link.reply(f"{message}")
-#TODO add permissions do only manage messages can use
-    @slash_commands.command(name="rickroll", description="Countdown to a rickroll!", guild_ids=test_ids, options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER, required=True)])
-    async def countdown_to_rickroll(self, ctx, time:int):
-        if time > 1000:
-            await ctx.send("Nah. Too long.")
-            return
-        count = time
-        one = await ctx.send(f"Rickrolling you in {count}")
-        for i in range(time):
-            count -= 1
-            await asyncio.sleep(1)
-            await one.edit(content=f"Rickrolling you in {count}")
-        await one.edit(content="https://youtu.be/dQw4w9WgXcQ")
+
 
     @slash_commands.command(name="react", description="makes me react to an existing message using the ID or message link.", guild_ids=test_ids, 
     options=[Option("link", "A message link or id for me to reply to", Type.STRING, 
@@ -48,6 +33,58 @@ class utility(commands.Cog):
         mseglink = await c.convert(ctx, link) 
         await mseglink.add_reaction(f"{reaction}")
         await ctx.send("The reaction was added!", ephemeral=True)
+
+    @slash_commands.command(
+	guild_ids=test_ids,
+	description="Builds a custom embed",
+	options=[
+		Option('title', 'Makes the title of the embed', Type.STRING),
+		Option('description', 'Makes the description', Type.STRING),
+		Option('color', 'The color of the embed', Type.STRING)
+
+		# Note that all args are optional
+		# because we didn't specify required=True in Options
+	])
+    @slash_commands.has_permissions(manage_messages=True)
+    async def embed(self, inter, title=None, description=None, color=None):
+        # Converting color
+        if color is not None:
+            try:
+                color = await commands.ColorConverter().convert(inter, color)
+            except:
+                color = None
+        if color is None:
+            color = discord.Color.default()
+        # Generating an embed
+        emb = discord.Embed(color=color)
+        if title is not None:
+            emb.title = title
+        if description is not None:
+            emb.description = description
+        # Sending the output
+        await inter.create_response(embed=emb, hide_user_input=True)
+
+
+    @slash_commands.command(name="ping", description="Shows my latency!", guild_ids=test_ids
+    )
+    async def ping(self, ctx): # Defines a new "context" (ctx) command called "ping."
+        await ctx.send(f"Pong! ({self.bot.latency*1000}ms)")
+
+    @slash_commands.command(name="invite", 
+    guild_ids=test_ids, description="Sends my invite!")
+    async def invite(self, ctx):
+        await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands", ephemeral=True)
+
+
+    @slash.command(name="echo", guild_ids=test_ids, description="Post a message in another channel", options=[
+        Option("channel", "select a channel for me to post a message in", Type.CHANNEL, required=True),
+        Option("message", "Giv eme a message to relay in the channel", Type.STRING, required=True)])
+    @slash_commands.has_permissions(manage_messages=True)
+    async def echo (self, ctx, channel, message):
+        await channel.send(f"{message}")
+        await ctx.send(f"Message has been sent to {channel}", ephemeral=True)
+
+
 
 
 

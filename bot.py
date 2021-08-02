@@ -34,11 +34,8 @@ async def update(ctx):
 	await bot.load_extension('cogs.utility')
 
 for filename in os.listdir('./cogs'):
-  if filename.endswith('.py'):
-    bot.load_extension(f'cogs.{filename[:-3]}')
-    
-  else:
-    print(f'Unable to load {filename[:-3]}')
+	if filename.endswith('.py'):
+    	bot.load_extension(f'cogs.{filename[:-3]}')
 
 bot.load_extension('jishaku')
 bot.run(DISCORDTOKEN)
