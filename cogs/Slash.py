@@ -12,9 +12,9 @@ class Slash(commands.Cog):
     # reply to message cmd
     @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", guild_ids=test_ids, 
     options=[Option("link", "A message link for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
-    async def replycmd(self, ctx, link: discord.Message, message):
-        print(type(link))
-        await link.reply(f"{message}")
+    async def replycmd(self, ctx, link, message):
+        msglink = MessageConverter().convert(ctx, link)
+        await msglink.reply(f"{message}")
 
     @commands.command()
     async def replycmd(self, ctx, link: discord.Message, message):
