@@ -22,17 +22,23 @@ async def on_ready():
 	print("Bot is online.")
 
 
+
 @bot.command(name="update")
 @commands.is_owner()
 async def update(ctx):
 	updater = bot.get_command("jsk git")
 	await updater(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
-	await bot.unload_extension('mod')
-	await bot.load_extension('mod')
-	await bot.unload_extension('utility')
-	await bot.load_extension('utility')
+	await bot.unload_extension('cogs.mod')
+	await bot.load_extension('cogs.mod')
+	await bot.unload_extension('cogs.utility')
+	await bot.load_extension('cogs.utility')
 
-bot.load_extension('cogs.mod')
+for filename in os.listdir('./cogs'):
+  if filename.endswith('.py'):
+    bot.load_extension(f'cogs.{filename[:-3]}')
+    
+  else:
+    print(f'Unable to load {filename[:-3]}')
+
 bot.load_extension('jishaku')
-bot.load_extension('cogs.utility')
 bot.run(DISCORDTOKEN)
