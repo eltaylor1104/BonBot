@@ -34,5 +34,5 @@ async def update(ctx):
 
 bot.load_extension('cogs.mod')
 bot.load_extension('jishaku')
-bot.load_extension('cogs.util')
+bot.load_extension('cogs.utility')
 bot.run(DISCORDTOKEN)

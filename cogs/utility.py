@@ -9,7 +9,7 @@ bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
 slash = SlashClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
-class util(commands.Cog):
+class utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -53,4 +53,4 @@ class util(commands.Cog):
 
 
 def setup(bot):
-    bot.add_cog(util(bot))
+    bot.add_cog(utility(bot))
