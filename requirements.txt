@@ -3,3 +3,4 @@ dislash.py
 python-dotenv
 asyncio
 jishaku
+pymongo
