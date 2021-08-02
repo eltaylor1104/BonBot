@@ -5,6 +5,7 @@ import discord
 import os
 import dislash
 import jishaku
+from jishaku.codeblocks import Codeblock, codeblock_converter
 load_dotenv()
 
 
