@@ -6,7 +6,6 @@ import os
 import dislash
 import jishaku
 
-
 class mod(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
