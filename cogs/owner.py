@@ -17,7 +17,7 @@ class owner(commands.Cog):
 
 
     @commands.command(hidden=True)
-    @checks.is_owner()
+    @commands.is_owner()
     async def load(self, *, module : str):
         """Loads a module."""
         try:
@@ -29,7 +29,7 @@ class owner(commands.Cog):
             await self.bot.say('\N{OK HAND SIGN}')
 
     @commands.command(hidden=True)
-    @checks.is_owner()
+    @commands.is_owner()
     async def unload(self, *, module : str):
         """Unloads a module."""
         try:
@@ -41,7 +41,7 @@ class owner(commands.Cog):
             await self.bot.say('\N{OK HAND SIGN}')
 
     @commands.command(name='reload', hidden=True)
-    @checks.is_owner()
+    @commands.is_owner()
     async def _reload(self, *, module : str):
         """Reloads a module."""
         try:
