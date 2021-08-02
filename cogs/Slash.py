@@ -13,8 +13,8 @@ class Slash(commands.Cog):
     @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", guild_ids=test_ids, 
     options=[Option("link", "A message link for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
     async def reply(self, ctx, link: str, message):
-        message = await commands.MessageConverter.convert(ctx, link)
-        await message.reply(f"{message}")
+        messageObj = await commands.MessageConverter.convert(ctx, link)
+        await messageObj.reply(f"{message}")
         await ctx.send("Message has been sent!", ephemeral=True)
 
     @slash_commands.command(name="rickroll", description="Countdown to a rickroll!", guild_ids=test_ids, options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER, required=True)])
