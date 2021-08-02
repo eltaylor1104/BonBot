@@ -97,6 +97,10 @@ class mod(commands.Cog):
         await channel.send(f"{message}")
         await ctx.send(f"Message has been sent to {channel}", ephemeral=True)
 
+    @commands.command(name="ping", description="Shows my latency!")
+    async def ping(self, ctx): # Defines a new "context" (ctx) command called "ping."
+        await ctx.send(f"Pong! ({self.bot.latency*1000}ms)")
+
 
 
 def setup(bot):
