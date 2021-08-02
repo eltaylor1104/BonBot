@@ -6,7 +6,7 @@ from dislash import *
 from jishaku.codeblocks import Codeblock, codeblock_converter
 
 test_ids = [804935799316676629] # Put your server ID in this array
-class Slash(commands.Cog):
+class utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
@@ -49,9 +49,23 @@ class Slash(commands.Cog):
     @commands.command(name="update")
     @commands.is_owner()
     async def botupdate(self, ctx):
-        jsk = self.bot.get_command("jsk git")
-        await jsk(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
+        updatecommand = self.bot.get_command("jsk git")
+        await updatecommand(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
+        await self.bot.unload_extension('mod')
+        await self.bot.load_extension('mod')
+        await self.bot.unload_extension('utility')
+        await self.bot.load_extension('utility')
+
+    @slash_commands.command(name="update", decription="owner only!", guild_ids=test_ids)
+    @slash_commands.is_owner()
+    async def botupdate(self, ctx):
+        updatecmd = self.bot.get_command("jsk git")
+        await updatecmd(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
+        await self.bot.unload_extension('mod')
+        await self.bot.load_extension('mod')
+        await self.bot.unload_extension('utility')
+        await self.bot.load_extension('utility')
 
 
 def setup(bot):
-    bot.add_cog(Slash(bot))
+    bot.add_cog(utility(bot))
