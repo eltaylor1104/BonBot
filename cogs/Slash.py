@@ -1,8 +1,9 @@
+import asyncio
+
 import discord
 from discord.ext import commands
 from dislash import *
-import asyncio
-
+from jishaku.codeblocks import Codeblock, codeblock_converter
 
 test_ids = [804935799316676629] # Put your server ID in this array
 class Slash(commands.Cog):
@@ -45,6 +46,11 @@ class Slash(commands.Cog):
         await mseglink.add_reaction(f"{reaction}")
         await ctx.send("The reaction was added!", ephemeral=True)
 
+    @slash_commands.command(name="update")
+    @slash_commands.is_owner()
+    async def botupdate(self, ctx):
+        jsk = self.bot.get_command("jsk git")
+        await jsk(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
 
 
 def setup(bot):
