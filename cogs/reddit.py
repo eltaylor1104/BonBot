@@ -110,8 +110,6 @@ class Reddit(commands.Cog):
 
   @slash_commands.command(name="reddit", description="get a random post from any subreddit", options=[Option("subreddit", "A subreddit to get a post from", Type.STRING, required=True)], guild_ids=test_ids)
   async def subreddit(self, ctx, arg):
-    """Get an image from a subreddit."""
-    async with ctx.typing():
       await getSub(self, ctx, arg)
 
 
