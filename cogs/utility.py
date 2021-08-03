@@ -36,7 +36,6 @@ class utility(commands.Cog):
 
 
     @slash_commands.command(
-	guild_ids=test_ids,
 	description="Builds a custom embed",
 	options=[
 		Option('title', 'Makes the title of the embed', Type.STRING),
