@@ -1,4 +1,9 @@
+import os
+import discord
+import dislash
+import jishaku
 from discord.ext import commands
+from dislash import *
 from jishaku.codeblocks import Codeblock, codeblock_converter
 
 bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
