@@ -35,7 +35,7 @@ async def getSub(self, ctx, subreddit):
           s = ""
           subredditDict = dict(res[0]['data']['children'][0]['data'])
           if subredditDict['over_18'] and not ctx.channel.is_nsfw():
-              embed = discord.Embed(title="Thats an NSFW subreddit!", description="To get an image from this subreddit, please use this command again in an NSFW channel", timestamp=ctx.message.created_at, color=discord.Color.red())
+              embed = discord.Embed(title="Thats an NSFW subreddit!", description="To get an image from this subreddit, please use this command again in an NSFW channel", color=discord.Color.red())
               await ctx.send(embed=embed)
               return
           embed = discord.Embed(title = f"{subredditDict['title']}", description = f"{subredditDict['subreddit_name_prefixed']}", url =  f"https://reddit.com{subredditDict['permalink']}")
@@ -97,7 +97,7 @@ async def getSubs(self, ctx, sub):
 
                               break #done with this loop, can send image
               subredditDict = dict(request['data']['children'][0]['data'])
-              embed = discord.Embed(title=f"{thereddit}", description=f"{thetitle}", url=f"{link}", footer=f"🔺 {upvotes}", timestamp=ctx.message.created_at)
+              embed = discord.Embed(title=f"{thereddit}", description=f"{thetitle}", url=f"{link}", footer=f"🔺 {upvotes}")
               embed.set_image(url=memeHistory[len(memeHistory) - 1])
               await ctx.send(embed=embed) #send the last image
               return
@@ -107,86 +107,14 @@ class Reddit(commands.Cog):
   def __init__(self, client):
     self.client = client
 
-      
-  @commands.command(aliases=['st','shower'])
-  @commands.cooldown(1, 1, commands.BucketType.channel)
-  async def showerthought(self, ctx):
-    async with ctx.typing():
-      if True:
-        async with aiohttp.ClientSession() as session:
-          async with session.get("https://www.reddit.com/r/showerthoughts/hot.json?limit=450") as response:
-              request = await response.json()
 
-        attempts = 1
-        while attempts < 5:
-          if 'error' in request:
-              print("failed request {}".format(attempts))
-              await asyncio.sleep(2)
-              async with aiohttp.ClientSession() as session:
-                  async with session.get("https://www.reddit.com/r/showerthoughts/hot.json?limit=450") as response:
-                      request = await response.json()
-              attempts += 1
-          else:
-              index = 0
-
-              for index, val in enumerate(request['data']['children']):
-                  if 'title' in val['data']:
-                      url = val['data']['title']
-                      urlLower = url.lower()
-                      accepted = False
-                      if url == "What Is A Showerthought?":
-                          accepted = False
-                      elif url == "Showerthoughts is looking for new moderators!":
-                          accepted = False
-                      elif url == "IMPORTANT PSA: No, you did not win a gift card.":
-                          accepted = False
-                      else:
-                          accepted = True
-                      if accepted:
-                          if url not in memeHistory:
-                              memeHistory.append(url)
-                              if len(memeHistory) > 63:
-                                  memeHistory.popleft()
-
-                              break
-              embed = discord.Embed(title=f"Showerthought", timestamp=ctx.message.created_at, description=memeHistory[len(memeHistory) - 1],color=discord.Color.blurple())
-              await ctx.send(embed=embed)
-              return
-        await ctx.send("_{}! ({})_".format(str(request['message']), str(request['error'])))
-  @commands.command(aliases=["ph"])
-  @commands.cooldown(1, 1, commands.BucketType.channel)
-  async def programmerhumor(self, ctx):
-    """Get an image from the ProgrammerHumor subreddit."""
-    async with ctx.typing():
-      await getSub(self, ctx, 'ProgrammerHumor')
-      
-  @commands.command(aliases=["r"])
-  @commands.cooldown(1, 1, commands.BucketType.channel)
+  @slash_commands.command(name="reddit", description="get a random post from any subreddit", options=[Option("subreddit", "A subreddit to get a post from", Type.STRING, required=True)], guild_ids=test_ids)
   async def subreddit(self, ctx, arg):
     """Get an image from a subreddit."""
     async with ctx.typing():
       await getSub(self, ctx, arg)
 
-  @commands.command(aliases=["dunmiff"])
-  @commands.cooldown(1, 1, commands.BucketType.channel)
-  async def dundermifflin(self, ctx):
-    """Get an image from the DunderMifflin subreddit."""
-    async with ctx.typing():
-      await getSub(self, ctx, 'DunderMifflin')
 
-  @commands.command(aliases=["bpt"])
-  @commands.cooldown(1, 1, commands.BucketType.channel)
-  async def blackpeopletwitter(self, ctx):
-    """Get an image from the Black People Twitter subreddit."""
-    async with ctx.typing():
-      await getSub(self, ctx, 'BlackPeopleTwitter')
-
-  @commands.command(aliases=["wpt"])
-  @commands.cooldown(1, 1, commands.BucketType.channel)
-  async def whitepeopletwitter(self, ctx):
-    """Get an image from the White People Twitter subreddit."""
-    async with ctx.typing():
-      await getSub(self, ctx, 'WhitePeopleTwitter')
 
   @slash_commands.command(guild_ids=test_ids)
   async def meme(self, ctx):
