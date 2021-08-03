@@ -34,6 +34,7 @@ class utility(commands.Cog):
         await mseglink.add_reaction(f"{reaction}")
         await ctx.send("The reaction was added!", ephemeral=True)
 
+
     @slash_commands.command(
 	guild_ids=test_ids,
 	description="Builds a custom embed",
@@ -65,10 +66,17 @@ class utility(commands.Cog):
         await inter.create_response(embed=emb, hide_user_input=True)
 
 
-    @slash_commands.command(name="ping", description="Shows my latency!", guild_ids=test_ids
-    )
-    async def ping(self, ctx): # Defines a new "context" (ctx) command called "ping."
-        await ctx.send(f"Pong! ({self.bot.latency*1000}ms)")
+    @slash_commands.command(name="ping", description="Shows my latency!", guild_ids=test_ids)
+    async def ping(self, ctx):
+        if round(self.bot.latency*1000) <= 50:
+            embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0x44ff44)
+        elif round(self.bot.latency*1000) <= 100:
+            embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0xffd000)
+        elif round(self.bot.latency*1000) <= 200:
+            embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0xff6600)
+        else:
+            embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0x990000)
+        await ctx.send(embed=embed)
 
     @slash_commands.command(name="invite", 
     guild_ids=test_ids, description="Sends my invite!")
