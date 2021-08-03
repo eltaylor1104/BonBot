@@ -35,9 +35,6 @@ class ActivityMgmt(commands.Cog, name='Activity Management'):
         self.previous_activity = None
         self.holidays_task.start()
 
-    async def cog_check(self, ctx):
-        return self.client.user_is_admin(ctx.author)
-
     # ----------------------------------------------
     # Helper Functions
     # ----------------------------------------------
