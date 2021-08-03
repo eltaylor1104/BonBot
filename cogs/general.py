@@ -5,6 +5,7 @@ import discord
 import os
 import dislash
 import jishaku
+import asyncio
 
 bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
 slash = SlashClient(bot)
