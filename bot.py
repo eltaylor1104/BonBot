@@ -23,7 +23,7 @@ async def on_ready():
 
 
 
-@bot.command(name="update")
+@bot.command(name="update", hidden=True)
 @commands.is_owner()
 async def update(ctx):
 	updater = bot.get_command("jsk git")
