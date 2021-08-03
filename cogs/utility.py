@@ -63,8 +63,6 @@ class utility(commands.Cog):
             emb.title = title
         if description is not None:
             emb.description = description
-        if footer is not None:
-            emb.footer = footer
         # Sending the output
         await inter.create_response(embed=emb, hide_user_input=True)
 
