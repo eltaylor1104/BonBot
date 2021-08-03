@@ -40,8 +40,8 @@ class mod(commands.Cog):
 
     @slash_commands.command(name="purge", description="Purge a given amount of messages", guild_ids=test_ids, options=[Option("amount", "amount of messages to purge", Type.INTEGER, required=True)])
     @slash_commands.has_permissions(manage_messages=True)
-    async def clean(self, ctx, limit):
-            await ctx.channel.purge(limit=limit)
+    async def clean(self, ctx, amount):
+            await ctx.channel.purge(limit=amount)
             await ctx.send(f'Cleared {limit} messages.', ephemeral=True)
 
 
