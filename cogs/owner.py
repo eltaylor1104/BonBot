@@ -56,6 +56,36 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'🔁**`{cog}`**', ephemeral=True)
 
+    async def set_activity(self, *args, text=None, activity=None):
+        if activity:
+            await self.client.change_presence(
+                activity=activity
+            )
+            return
+
+        if text == '':
+            await self.client.change_presence(activity=None)
+            return
+
+        activities = ('playing', 'streaming', 'listening', 'watching')
+        text_split = text.split(' ')
+        _activity = text_split.pop(0).lower()
+        if _activity not in activities:
+            return False
+        _type = activities.index(_activity)
+        if _type == 2 and text_split[0].lower() == 'to':
+            del text_split[0]
+        if _type == 1:
+            _url = text_split.pop(0)
+        else:
+            _url = None
+        _name = ' '.join(text_split)
+        await self.client.change_presence(
+            activity=Activity(name=_name, url=_url, type=_type)
+        )
+        return True
+
+
     @commands.command(
     name='activity',
     hidden=True)
