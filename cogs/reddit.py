@@ -225,7 +225,7 @@ class Reddit(commands.Cog):
                                   memeHistory.popleft() 
 
                               break 
-              embed = discord.Embed(title=f"Meme", timestamp=ctx.message.created_at,color=ctx.author.color)
+              embed = discord.Embed(title=f"Meme",color=ctx.author.color)
               embed.set_image(url=memeHistory[len(memeHistory) - 1])
               await ctx.send(embed=embed)
               return
