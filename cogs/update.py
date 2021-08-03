@@ -7,12 +7,16 @@ from discord.ext import commands
 from dislash import *
 from jishaku.codeblocks import Codeblock, codeblock_converter
 
+
+bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
+slash = SlashClient(bot)
+test_ids = [804935799316676629] # Put your server ID in this array
 class CustomDebugCog(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
     @Feature.Command(parent="jsk", name="git")
     async def jsk_git(self, ctx: commands.Context):
         await ctx.send("pull")
 
-    @slash_commands.command(name="update")
+    @slash_commands.command(name="update", description="owner only", guild_ids=test_ids)
     @slash_commands.is_owner()
     async def update(ctx):
         await jishaku_git(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
