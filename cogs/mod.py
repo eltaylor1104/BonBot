@@ -1,10 +1,11 @@
+import os
+
+import discord
+import dislash
+import jishaku
 from discord.ext import commands
 from dislash import *
 from dotenv import load_dotenv
-import discord
-import os
-import dislash
-import jishaku
 
 bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
 slash = SlashClient(bot)

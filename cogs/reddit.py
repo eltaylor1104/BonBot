@@ -1,18 +1,15 @@
-import discord
-from discord.ext import commands 
 import asyncio
-import aiohttp
 import random
-from random import randint
-from random import choice
-from urllib.parse import quote_plus
 from collections import deque
+from random import choice, randint
+from urllib.parse import quote_plus
+
+import aiohttp
+import discord
 import dislash
-from dislash import *
-
-
-
 import requests
+from discord.ext import commands
+from dislash import *
 
 FIFTEEN_MINUTES = 900
 
