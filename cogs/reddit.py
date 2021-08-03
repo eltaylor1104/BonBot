@@ -14,7 +14,9 @@ import requests
 
 FIFTEEN_MINUTES = 900
 
-
+bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
+slash = SlashClient(bot)
+test_ids = [804935799316676629] # Put your server ID in this array
 
 
 #CREDIT TO BobDotCom on GitHub and Discord for part of this code, primarily the reddit commands. THAT IS NOT MY CODE!
@@ -184,7 +186,7 @@ class Reddit(commands.Cog):
     async with ctx.typing():
       await getSub(self, ctx, 'WhitePeopleTwitter')
 
-  @slash_commands.command()
+  @slash_commands.command(guild_ids=test_ids)
   async def meme(self, ctx):
     """Memes from various subreddits"""
     async with ctx.typing():
