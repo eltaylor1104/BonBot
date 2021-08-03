@@ -28,14 +28,14 @@ async def on_ready():
 async def update(ctx):
 	updater = bot.get_command("jsk git")
 	await updater(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
-	await bot.unload_extension('cogs.mod')
-	await bot.load_extension('cogs.mod')
-	await bot.unload_extension('cogs.utility')
-	await bot.load_extension('cogs.utility')
-	await bot.unload_extension('cogs.general')
-	await bot.load_extension('cogs.general')
-	await bot.unload_extension('cogs.owner')
-	await bot.load_extension('cogs.owner')
+	bot.unload_extension('cogs.mod')
+	bot.load_extension('cogs.mod')
+	bot.unload_extension('cogs.utility')
+	bot.load_extension('cogs.utility')
+	bot.unload_extension('cogs.general')
+	bot.load_extension('cogs.general')
+	bot.unload_extension('cogs.owner')
+	bot.load_extension('cogs.owner')
 
 for filename in os.listdir('./cogs'):
 	if filename.endswith('.py'):
