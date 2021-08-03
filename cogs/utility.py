@@ -15,7 +15,7 @@ class utility(commands.Cog):
 
 
     # reply to message cmd
-    @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", guild_ids=test_ids, 
+    @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", 
     options=[Option("link", "A message link or id for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
     async def replycmd(self, ctx, link, message):
         c = commands.MessageConverter() # create instance
@@ -25,7 +25,7 @@ class utility(commands.Cog):
 
 
 
-    @slash_commands.command(name="react", description="makes me react to an existing message using the ID or message link.", guild_ids=test_ids, 
+    @slash_commands.command(name="react", description="makes me react to an existing message using the ID or message link.", 
     options=[Option("link", "A message link or id for me to reply to", Type.STRING, 
     required=True), Option("reaction", "The reaction to be added", Type.STRING, required=True)])
     async def addreaction(self, ctx, link, reaction):
@@ -66,7 +66,7 @@ class utility(commands.Cog):
         await inter.create_response(embed=emb, hide_user_input=True)
 
 
-    @slash_commands.command(name="ping", description="Shows my latency!", guild_ids=test_ids)
+    @slash_commands.command(name="ping", description="Shows my latency!")
     async def ping(self, ctx):
         if round(self.bot.latency*1000) <= 50:
             embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0x44ff44)
@@ -78,13 +78,12 @@ class utility(commands.Cog):
             embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0x990000)
         await ctx.send(embed=embed)
 
-    @slash_commands.command(name="invite", 
-    guild_ids=test_ids, description="Sends my invite!")
+    @slash_commands.command(name="invite", description="Sends my invite!")
     async def invite(self, ctx):
         await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands", ephemeral=True)
 
 
-    @slash.command(name="echo", guild_ids=test_ids, description="Post a message in another channel", options=[
+    @slash.command(name="echo", description="Post a message in another channel", options=[
         Option("channel", "select a channel for me to post a message in", Type.CHANNEL, required=True),
         Option("message", "Giv eme a message to relay in the channel", Type.STRING, required=True)])
     @slash_commands.has_permissions(manage_messages=True)

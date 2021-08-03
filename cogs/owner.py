@@ -18,7 +18,7 @@ class owner(commands.Cog):
     
 
 
-    @slash_commands.command(name='load', guild_ids=test_ids, description="owner only", options=[Option("cog", "a cog to load", Type.STRING, required=True)])
+    @slash_commands.command(name='load', description="owner only", options=[Option("cog", "a cog to load", Type.STRING, required=True)])
     @slash_commands.is_owner()
     async def load(self, ctx, *, cog: str):
         """Command which Loads a Module.
@@ -30,7 +30,7 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'📥**`{cog}`**', ephemeral=True)
 
-    @slash_commands.command(name='unload', guild_ids=test_ids, description="unload a cog", options=[Option("cog", "a cog to unload", Type.STRING, required=True)])
+    @slash_commands.command(name='unload', description="unload a cog", options=[Option("cog", "a cog to unload", Type.STRING, required=True)])
     @slash_commands.is_owner()
     async def unload(self, ctx, *, cog: str):
         """Command which Unloads a Module.
@@ -43,7 +43,7 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'📤**`{cog}`**', ephemeral=True)
 
-    @slash_commands.command(name='reload', guild_ids=test_ids, description='reload a cog', options=[Option("cog", "a cog to unload", Type.STRING, required=True)])
+    @slash_commands.command(name='reload', description='reload a cog', options=[Option("cog", "a cog to unload", Type.STRING, required=True)])
     @slash_commands.is_owner()
     async def reload(self, ctx, *, cog: str):
         """Command which Reloads a Module.

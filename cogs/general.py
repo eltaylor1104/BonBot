@@ -18,7 +18,7 @@ class general(commands.Cog):
         self.bot = bot
     
 
-    @slash_commands.command(name="rickroll", description="Countdown to a rickroll!", guild_ids=test_ids, options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER, required=True)])
+    @slash_commands.command(name="rickroll", description="Countdown to a rickroll!", options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER, required=True)])
     async def countdown_to_rickroll(self, ctx, time:int):
         if time > 1000:
             await ctx.send("Nah. Too long.")
