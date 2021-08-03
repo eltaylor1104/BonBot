@@ -69,7 +69,7 @@ class owner(commands.Cog):
         \u1160listening [music],
         \u1160watching [movie]"""
         
-        await self.set_activity(text=' '.join(activity))
+        await self.bot.set_activity(text=' '.join(activity))
 
 
 def setup(bot):
