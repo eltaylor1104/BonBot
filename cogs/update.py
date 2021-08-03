@@ -5,13 +5,14 @@ import dislash
 import jishaku
 from discord.ext import commands
 from dislash import *
+from jishaku.cog import STANDARD_FEATURES, OPTIONAL_FEATURES
 from jishaku.codeblocks import Codeblock, codeblock_converter
 
 
 bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
 slash = SlashClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
-class CustomDebugCog(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
+class update(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
     @Feature.Command(parent="jsk", name="git")
     async def jsk_git(self, ctx: commands.Context):
         await ctx.send("pull")
@@ -29,4 +30,4 @@ class CustomDebugCog(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
         self.bot.load_extension('cogs.owner')
 
 def setup(bot: commands.Bot):
-    bot.add_cog(CustomDebugCog(bot=bot))
+    bot.add_cog(update(bot))
