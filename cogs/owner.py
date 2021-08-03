@@ -64,9 +64,9 @@ class owner(commands.Cog):
         try:
             self.bot.load_extension(f'cogs.{cog}')
         except Exception as e:
-            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
+            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}', ephemeral=True)
         else:
-            await ctx.send(f'📥**`{cog}`**')
+            await ctx.send(f'📥**`{cog}`**', ephemeral=True)
 
     @slash_commands.command(name='unload', guild_ids=test_ids, description="unload a cog", options=[Option("cog", "a cog to unload", Type.STRING, required=True)])
     @slash_commands.is_owner()
@@ -77,9 +77,9 @@ class owner(commands.Cog):
         try:
             self.bot.unload_extension(f'cogs.{cog}')
         except Exception as e:
-            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
+            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}', ephemeral=True)
         else:
-            await ctx.send(f'📤**`{cog}`**')
+            await ctx.send(f'📤**`{cog}`**', ephemeral=True)
 
     @slash_commands.command(name='reload', guild_ids=test_ids, description='reload a cog', options=[Option("cog", "a cog to unload", Type.STRING, required=True)])
     @slash_commands.is_owner()
@@ -91,9 +91,9 @@ class owner(commands.Cog):
             self.bot.unload_extension(f'cogs.{cog}')
             self.bot.load_extension(f'cogs.{cog}')
         except Exception as e:
-            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
+            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}', ephemeral=True)
         else:
-            await ctx.send(f'🔁**`{cog}`**')
+            await ctx.send(f'🔁**`{cog}`**', ephemeral=True)
 
 
 def setup(bot):
