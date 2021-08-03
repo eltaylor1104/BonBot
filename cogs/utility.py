@@ -41,13 +41,14 @@ class utility(commands.Cog):
 	options=[
 		Option('title', 'Makes the title of the embed', Type.STRING),
 		Option('description', 'Makes the description', Type.STRING),
-		Option('color', 'The color of the embed', Type.STRING)
+		Option('color', 'The color of the embed', Type.STRING),
+        Option('footer', 'The footer of the embed', Type.STRING)
 
 		# Note that all args are optional
 		# because we didn't specify required=True in Options
 	])
     @slash_commands.has_permissions(manage_messages=True)
-    async def embed(self, inter, title=None, description=None, color=None):
+    async def embed(self, inter, title=None, description=None, color=None, footer=None):
         # Converting color
         if color is not None:
             try:
@@ -62,6 +63,8 @@ class utility(commands.Cog):
             emb.title = title
         if description is not None:
             emb.description = description
+        if footer is not None:
+            emb.footer = footer
         # Sending the output
         await inter.create_response(embed=emb, hide_user_input=True)
 
