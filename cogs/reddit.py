@@ -109,8 +109,8 @@ class Reddit(commands.Cog):
 
 
   @slash_commands.command(name="reddit", description="get a random post from any subreddit", options=[Option("subreddit", "A subreddit to get a post from", Type.STRING, required=True)], guild_ids=test_ids)
-  async def subreddit(self, ctx, arg):
-      await getSub(self, ctx, arg)
+  async def subreddit(self, ctx, sub):
+      await getSub(sub)
 
 
 
