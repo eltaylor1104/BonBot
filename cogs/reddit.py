@@ -179,7 +179,7 @@ class Reddit(commands.Cog):
                               break 
               embed = discord.Embed(title=f"Meme",color=ctx.author.color)
               embed.set_image(url=memeHistory[len(memeHistory) - 1])
-              await ctx.send(embed=embed,ephemeral=True)
+              await ctx.send(embed=embed, ephemeral=True)
               return
         await ctx.send(url="_{}! ({})_".format(str(request['message']), str(request['error'])), ephemeral=True)
         
