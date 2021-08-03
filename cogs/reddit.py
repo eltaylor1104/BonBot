@@ -191,9 +191,9 @@ class Reddit(commands.Cog):
   @slash_commands.command(guild_ids=test_ids)
   async def meme(self, ctx):
     """Memes from various subreddits"""
-      if True:
+    if True:
         await getSub(self, ctx, choice(memeSubreddits))
-      else:
+    else:
         async with aiohttp.ClientSession() as session:
           async with session.get("https://www.reddit.com/r/{0}/hot.json?limit=450".format(random.choice(memeSubreddits))) as response:
               request = await response.json()
