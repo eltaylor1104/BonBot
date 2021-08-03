@@ -68,6 +68,33 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'📥**`{cog}`**')
 
+    @slaash_commands.command(name='unload', description="unload a cog", options=[Option("cog", "a cog to unload", Type.STRING, required=True)])
+    @slash_commands.is_owner()
+    async def unload(self, ctx, *, cog: str):
+        """Command which Unloads a Module.
+        Remember to use dot path. e.g: cogs.owner"""
+
+        try:
+            self.bot.unload_extension(f'cogs.{cog}')
+        except Exception as e:
+            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
+        else:
+            await ctx.send(f'📤**`{cog}`**')
+
+    @slash_commands.command(name='reload', description='reload a cog', options=[Option("cog", "a cog to unload", Type.STRING, required=True)])
+    @slash_commands.is_owner()
+    async def reload(self, ctx, *, cog: str):
+        """Command which Reloads a Module.
+        Remember to use dot path. e.g: cogs.owner"""
+
+        try:
+            self.bot.unload_extension(f'cogs.{cog}')
+            self.bot.load_extension(f'cogs.{cog}')
+        except Exception as e:
+            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
+        else:
+            await ctx.send(f'🔁**`{cog}`**')
+
 
 def setup(bot):
     bot.add_cog(owner(bot))
