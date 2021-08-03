@@ -184,8 +184,7 @@ class Reddit(commands.Cog):
     async with ctx.typing():
       await getSub(self, ctx, 'WhitePeopleTwitter')
 
-  @commands.command()
-  @commands.cooldown(1, 1, commands.BucketType.channel)
+  @slash_commands.command()
   async def meme(self, ctx):
     """Memes from various subreddits"""
     async with ctx.typing():
