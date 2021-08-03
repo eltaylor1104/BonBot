@@ -40,8 +40,6 @@ async def update(ctx):
 	bot.load_extension('cogs.owner')
 	bot.unload_extension('cogs.reddit')
 	bot.load_extension('cogs.reddit')
-	bot.unload_extension('cogs.poll')
-	bot.load_extension('cogs.poll')
 
 for filename in os.listdir('./cogs'):
 	if filename.endswith('.py'):
