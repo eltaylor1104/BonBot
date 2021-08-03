@@ -48,12 +48,12 @@ async def getSub(self, ctx, subreddit):
           if subredditDict['selftext'] != "&amp;#x200B;":
                 await ctx.send(embed = embed)
           else:
-                await ctx.send("Annoying error with reddit being stupid. Try again lmao")
+                await ctx.send("Annoying error with reddit being stupid. Try again lmao", ephemeral=True)
     else:
       try: 
-        return await ctx.send("_{}! ({})_".format(str(subredditDict['message']), str(subredditDict['error'])))
+        return await ctx.send("_{}! ({})_".format(str(subredditDict['message']), str(subredditDict['error'])), ephemeral=True)
       except:
-        return await ctx.send("Error")
+        return await ctx.send("Error", ephemeral=True)
 async def getSubs(self, ctx, sub):
       """Get stuff from requested sub"""
       async with aiohttp.ClientSession() as session:
@@ -74,7 +74,7 @@ async def getSubs(self, ctx, sub):
               for index, val in enumerate(request['data']['children']):
                   if val['data']["over_18"] == True:
                       if not ctx.channel.is_nsfw():
-                          return await ctx.send("Thats an nsfw reddit, nonono")
+                          return await ctx.send("Thats an nsfw reddit, nonono", ephemeral=True)
                   if 'url' in val['data']:
                       print(val['data'])
                       url = val['data']['url']
@@ -99,9 +99,9 @@ async def getSubs(self, ctx, sub):
               subredditDict = dict(request['data']['children'][0]['data'])
               embed = discord.Embed(title=f"{thereddit}", description=f"{thetitle}", url=f"{link}", footer=f"🔺 {upvotes}")
               embed.set_image(url=memeHistory[len(memeHistory) - 1])
-              await ctx.send(embed=embed) #send the last image
+              await ctx.send(embed=embed, ephemeral=True) #send the last image
               return
-      await ctx.send("_{}! ({})_".format(str(request['message']), str(request['error'])))
+      await ctx.send("_{}! ({})_".format(str(request['message']), str(request['error'])), ephemeral=True)
 
 class Reddit(commands.Cog):
   def __init__(self, client):
