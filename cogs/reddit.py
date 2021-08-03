@@ -7,6 +7,8 @@ from random import randint
 from random import choice
 from urllib.parse import quote_plus
 from collections import deque
+import dislash
+from dislash import *
 
 
 
