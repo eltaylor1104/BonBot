@@ -45,7 +45,7 @@ class mod(commands.Cog):
         await ctx.message.delete()
         msg = []
         try:
-            amount = int(amount)
+            amount = amount
         except:
             return await ctx.send("Please pass in an integer as an amount", ephemeral=True)
         if not user:
