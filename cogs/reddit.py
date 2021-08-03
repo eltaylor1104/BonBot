@@ -119,7 +119,7 @@ class Reddit(commands.Cog):
           subredditDict = dict(res[0]['data']['children'][0]['data'])
           if subredditDict['over_18'] and not ctx.channel.is_nsfw():
               embed = discord.Embed(title="Thats an NSFW subreddit!", description="To get an image from this subreddit, please use this command again in an NSFW channel", color=discord.Color.red())
-              await ctx.send(embed=embed)
+              await ctx.send(embed=embed, ephemeral=True)
               return
           embed = discord.Embed(title = f"{subredditDict['title']}", description = f"{subredditDict['subreddit_name_prefixed']}", url =  f"https://reddit.com{subredditDict['permalink']}")
           
@@ -129,14 +129,14 @@ class Reddit(commands.Cog):
               embed.set_image(url = subredditDict['url'])
           embed.set_footer(text=f"🔺 {subredditDict['ups']} | Author: {subredditDict['author']}")
           if subredditDict['selftext'] != "&amp;#x200B;":
-                await ctx.send(embed = embed)
+                await ctx.send(embed = embed, ephemeral=True)
           else:
-                await ctx.send("Annoying error with reddit being stupid. Try again lmao")
+                await ctx.send("Annoying error with reddit being stupid. Try again lmao", ephemeral=True)
     else:
       try: 
-        return await ctx.send("_{}! ({})_".format(str(subredditDict['message']), str(subredditDict['error'])))
+        return await ctx.send("_{}! ({})_".format(str(subredditDict['message']), str(subredditDict['error'])), ephemeral=True)
       except:
-        return await ctx.send("Error")
+        return await ctx.send("Error", ephemeral=True)
 
 
 
@@ -179,9 +179,9 @@ class Reddit(commands.Cog):
                               break 
               embed = discord.Embed(title=f"Meme",color=ctx.author.color)
               embed.set_image(url=memeHistory[len(memeHistory) - 1])
-              await ctx.send(embed=embed)
+              await ctx.send(embed=embed,ephemeral=True)
               return
-        await ctx.send(url="_{}! ({})_".format(str(request['message']), str(request['error'])))
+        await ctx.send(url="_{}! ({})_".format(str(request['message']), str(request['error'])), ephemeral=True)
         
 
     
