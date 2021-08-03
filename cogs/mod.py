@@ -41,9 +41,13 @@ class mod(commands.Cog):
     @slash_commands.command(name='purge', description='Delete a specified amount of messages with an optional user decorator.', guild_ids=test_ids, options=[
         Option("amount", "amount of messages to be purged", Type.INTEGER, required=True), Option("user", "an optional user to purge", Type.USER, required=False)
     ])
-    async def purge(ctx, amount=50, user: discord.Member=None):
+    async def purge(ctx, amount, user: discord.Member=None):
         await ctx.message.delete()
         msg = []
+        try:
+            amount = amount
+        except:
+            return await ctx.send("Please pass in an integer as an amount", ephemeral=True)
         if not user:
             await ctx.channel.purge(limit=limit)
             return await ctx.send(f"Purged {limit} messages", ephemeral=True, delete_after=3)
