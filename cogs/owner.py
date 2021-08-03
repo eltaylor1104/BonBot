@@ -47,6 +47,20 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'🔁**`{cog}`**')
 
+    @slash_commands.command(name="update")
+    @slash_commands.is_owner()
+    async def update(self, ctx):
+        updater = self.bot.get_command("jsk git")
+        await updater(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
+        self.bot.unload_extension('cogs.mod')
+        self.bot.load_extension('cogs.mod')
+        self.bot.unload_extension('cogs.utility')
+        self.bot.load_extension('cogs.utility')
+        self.bot.unload_extension('cogs.general')
+        self.bot.load_extension('cogs.general')
+        self.bot.unload_extension('cogs.owner')
+        self.bot.load_extension('cogs.owner')
+
 
 
 def setup(bot):
