@@ -56,8 +56,7 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'🔁**`{cog}`**', ephemeral=True)
 
-        @slash_commands.command(
-        name='activity', description="owner ONLY", options=[Option("activity", "an activity to set", Type.STRING, required=True)], guild_ids=test_ids)
+        @slash_commands.command(name='activity', description="owner ONLY", guild_ids=test_ids, options=[Option("activity", "an activity to set", Type.STRING, required=True)])
         @slash_commands.is_owner()
         async def activity(self, ctx, * activity):
             """Set Bot activity.
