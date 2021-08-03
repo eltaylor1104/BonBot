@@ -17,7 +17,6 @@ class CustomDebugCog(*OPTIONAL_FEATURES, *STANDARD_FEATURES):
         await ctx.send("pull")
 
     @slash_commands.command(name="update", description="owner only", guild_ids=test_ids)
-    @slash_commands.is_owner()
     async def update(ctx):
         await jishaku_git(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
         self.bot.unload_extension('cogs.mod')
