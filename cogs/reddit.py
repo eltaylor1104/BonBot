@@ -44,7 +44,7 @@ async def getSub(self, ctx, subreddit):
               embed.add_field(name = "Post Content:", value = subredditDict['selftext'])
           if subredditDict['url'] != "":
               embed.set_image(url = subredditDict['url'])
-          embed.set_footer(text=f"🔺 {subredditDict['ups']} | Author: {subredditDict['author']}")
+          embed.set_footer(text=f"🔺 {subredditDict['ups']} | u/{subredditDict['author']}")
           if subredditDict['selftext'] != "&amp;#x200B;":
                 await ctx.send(embed = embed)
           else:
@@ -127,7 +127,7 @@ class Reddit(commands.Cog):
               embed.add_field(name = "Post Content:", value = subredditDict['selftext'])
           if subredditDict['url'] != "":
               embed.set_image(url = subredditDict['url'])
-          embed.set_footer(text=f"🔺 {subredditDict['ups']} | Author: {subredditDict['author']}")
+          embed.set_footer(text=f"🔺 {subredditDict['ups']} | u/{subredditDict['author']}")
           if subredditDict['selftext'] != "&amp;#x200B;":
                 await ctx.send(embed = embed, ephemeral=True)
           else:
