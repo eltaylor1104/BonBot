@@ -20,7 +20,7 @@ DISCORDTOKEN = os.getenv('TOKEN')
 @bot.event
 async def on_ready(): 
 	print("Bot is online.")
-	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="s!help | BonBot™️"))
+	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="/meme | BonBot™️"))
 	print("Status has been changed.")
 
 
