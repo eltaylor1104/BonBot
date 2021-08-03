@@ -59,7 +59,7 @@ class owner(commands.Cog):
         @slash_commands.command(
         name='activity', description="owner ONLY", options=[Option("activity", "an activity to set", Type.STRING, required=True)], guild_ids=test_ids)
         @slash_commands.is_owner()
-        async def change_activity(self, ctx, *activity):
+        async def activity(self, ctx, * activity):
             """Set Bot activity.
             Available activities:
             \u1160playing, streaming, listening, watching.
