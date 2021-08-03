@@ -56,20 +56,17 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'🔁**`{cog}`**')
 
-    @slash_commands.command(name="update", description="owner command", guild_ids=test_ids)
+    @slash_commands.command(name='load', description="owner only", options=[Option("cog", "a cog to load", Type.STRING, required=True)])
     @slash_commands.is_owner()
-    async def update(self, ctx):
-        updater = self.bot.get_command("jsk git")
-        await updater(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
-        self.bot.unload_extension('cogs.mod')
-        self.bot.load_extension('cogs.mod')
-        self.bot.unload_extension('cogs.utility')
-        self.bot.load_extension('cogs.utility')
-        self.bot.unload_extension('cogs.general')
-        self.bot.load_extension('cogs.general')
-        self.bot.unload_extension('cogs.owner')
-        self.bot.load_extension('cogs.owner')
-
+    async def load(self, ctx, *, cog: str):
+        """Command which Loads a Module.
+        Remember to use dot path. e.g: cogs.owner"""
+        try:
+            self.bot.load_extension(f'cogs.{cog}')
+        except Exception as e:
+            await ctx.send(f'**`ERROR:`** {type(e).__name__} - {e}')
+        else:
+            await ctx.send(f'📥**`{cog}`**')
 
 
 def setup(bot):
