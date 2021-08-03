@@ -38,22 +38,7 @@ class mod(commands.Cog):
         await user.kick(reason = reason)
         await ctx.create_response(f"{user} has been kicked.", ephemeral=True)
 
-    @slash_commands.command(name='purge', description='Delete a specified amount of messages with an optional user decorator.', guild_ids=test_ids, options=[
-        Option("amount", "amount of messages to be purged", Type.INTEGER, required=True), Option("user", "an optional user to purge", Type.USER, required=False)
-    ])
-    async def purge(ctx, amount, user: discord.Member=None):
-        await ctx.message.delete()
-        msg = []
-        if not user:
-            await ctx.channel.purge(limit=limit)
-            return await ctx.send(f"Purged {limit} messages", ephemeral=True, delete_after=3)
-        async for m in ctx.channel.history():
-            if len(msg) == limit:
-                break
-            if m.author == user:
-                msg.append(m)
-        await ctx.channel.delete_messages(msg)
-        await ctx.send(f"Purged {limit} messages of {user.name}", ephemeral=True, delete_after=3)
+
 
 
 
