@@ -191,7 +191,6 @@ class Reddit(commands.Cog):
   @slash_commands.command(guild_ids=test_ids)
   async def meme(self, ctx):
     """Memes from various subreddits"""
-    async with ctx.typing():
       if True:
         await getSub(self, ctx, choice(memeSubreddits))
       else:
