@@ -56,20 +56,20 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'🔁**`{cog}`**', ephemeral=True)
 
-        @commands.command(
-        name='activity',
-        hidden=True)
-        async def change_activity(self, ctx, *activity: str):
-            """Set Bot activity.
-            Available activities:
-            \u1160playing, streaming, listening, watching.
-            Example activities:
-            \u1160playing [game],
-            \u1160streaming [linkToStream] [game],
-            \u1160listening [music],
-            \u1160watching [movie]"""
-            
-            await self.set_activity(text=' '.join(activity))
+    @commands.command(
+    name='activity',
+    hidden=True)
+    async def change_activity(self, ctx, *activity: str):
+        """Set Bot activity.
+        Available activities:
+        \u1160playing, streaming, listening, watching.
+        Example activities:
+        \u1160playing [game],
+        \u1160streaming [linkToStream] [game],
+        \u1160listening [music],
+        \u1160watching [movie]"""
+        
+        await self.set_activity(text=' '.join(activity))
 
 
 def setup(bot):
