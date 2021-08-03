@@ -42,7 +42,7 @@ class mod(commands.Cog):
     @slash_commands.has_permissions(manage_messages=True)
     async def clean(self, ctx, amount):
             await ctx.channel.purge(limit=amount)
-            await ctx.send(f'Cleared {limit} messages.', ephemeral=True)
+            await ctx.send(f'Cleared {amount} messages.', ephemeral=True)
 
 
 
