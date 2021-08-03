@@ -44,10 +44,6 @@ class mod(commands.Cog):
     async def purge(ctx, amount, user: discord.Member=None):
         await ctx.message.delete()
         msg = []
-        try:
-            amount = amount
-        except:
-            return await ctx.send("Please pass in an integer as an amount", ephemeral=True)
         if not user:
             await ctx.channel.purge(limit=limit)
             return await ctx.send(f"Purged {limit} messages", ephemeral=True, delete_after=3)
