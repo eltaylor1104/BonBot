@@ -9,7 +9,7 @@ from jishaku.codeblocks import Codeblock, codeblock_converter
 load_dotenv()
 
 
-bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!", help_command=None)
+bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
 slash = SlashClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
