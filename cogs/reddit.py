@@ -109,8 +109,34 @@ class Reddit(commands.Cog):
 
 
   @slash_commands.command(name="reddit", description="get a random post from any subreddit", options=[Option("subreddit", "A subreddit to get a post from", Type.STRING, required=True)], guild_ids=test_ids)
-  async def subreddit(self, ctx, sub):
-      await getSub(sub)
+  async def reddit(self, ctx, subreddit):
+    if True:
+      url = f"https://reddit.com/r/{subreddit}/random.json?limit=1"
+      async with aiohttp.ClientSession() as session:
+        async with session.get(f"https://reddit.com/r/{subreddit}/random.json?limit=1") as r:
+          res = await r.json()
+          s = ""
+          subredditDict = dict(res[0]['data']['children'][0]['data'])
+          if subredditDict['over_18'] and not ctx.channel.is_nsfw():
+              embed = discord.Embed(title="Thats an NSFW subreddit!", description="To get an image from this subreddit, please use this command again in an NSFW channel", color=discord.Color.red())
+              await ctx.send(embed=embed)
+              return
+          embed = discord.Embed(title = f"{subredditDict['title']}", description = f"{subredditDict['subreddit_name_prefixed']}", url =  f"https://reddit.com{subredditDict['permalink']}")
+          
+          if subredditDict['selftext'] != "":
+              embed.add_field(name = "Post Content:", value = subredditDict['selftext'])
+          if subredditDict['url'] != "":
+              embed.set_image(url = subredditDict['url'])
+          embed.set_footer(text=f"🔺 {subredditDict['ups']} | Author: {subredditDict['author']}")
+          if subredditDict['selftext'] != "&amp;#x200B;":
+                await ctx.send(embed = embed)
+          else:
+                await ctx.send("Annoying error with reddit being stupid. Try again lmao")
+    else:
+      try: 
+        return await ctx.send("_{}! ({})_".format(str(subredditDict['message']), str(subredditDict['error'])))
+      except:
+        return await ctx.send("Error")
 
 
 
