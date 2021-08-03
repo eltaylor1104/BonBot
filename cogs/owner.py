@@ -56,7 +56,7 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'🔁**`{cog}`**')
 
-    @slash_commands.command(name="update", description="owner command", test_ids=guild_ids)
+    @slash_commands.command(name="update", description="owner command", guild_ids=test_ids)
     @slash_commands.is_owner()
     async def update(self, ctx):
         updater = self.bot.get_command("jsk git")
