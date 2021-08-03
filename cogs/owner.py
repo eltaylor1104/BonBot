@@ -56,9 +56,10 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'🔁**`{cog}`**', ephemeral=True)
 
-        @commands.command(
-        name='activity',)
-        async def change_activity(self, ctx, *activity: str):
+        @slash_commands.command(
+        name='activity', description="owner ONLY", options=[Option("activity", "an activity to set", Type.STRING, required=True)])
+        @slash_commands.is_owner()
+        async def change_activity(self, ctx, *activity):
             """Set Bot activity.
             Available activities:
             \u1160playing, streaming, listening, watching.
