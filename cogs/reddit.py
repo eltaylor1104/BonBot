@@ -116,7 +116,7 @@ class Reddit(commands.Cog):
 
 
 
-  @slash_commands.command(guild_ids=test_ids)
+  @slash_commands.command(guild_ids=test_ids, description="Get a meme from a random meme subreddit")
   async def meme(self, ctx):
     """Memes from various subreddits"""
     if True:
