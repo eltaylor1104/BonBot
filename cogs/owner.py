@@ -68,7 +68,7 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'📥**`{cog}`**')
 
-    @slaash_commands.command(name='unload', guild_ids=test_ids, description="unload a cog", options=[Option("cog", "a cog to unload", Type.STRING, required=True)])
+    @slash_commands.command(name='unload', guild_ids=test_ids, description="unload a cog", options=[Option("cog", "a cog to unload", Type.STRING, required=True)])
     @slash_commands.is_owner()
     async def unload(self, ctx, *, cog: str):
         """Command which Unloads a Module.
