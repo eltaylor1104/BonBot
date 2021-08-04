@@ -58,7 +58,7 @@ class owner(commands.Cog):
         else:
             await ctx.send(f'🔁**`{cog}`**', ephemeral=True)
 
-    @slash_commands.command(name='servers', description='view all servers that I am in', guild_ids=test_ids)
+    @slash_commands.command(name='servers', description='view all servers that I am in')
     @slash_commands.is_owner()
     async def guilds(self, ctx):
         em1 = discord.Embed(title=  "Guilds [1 - 20]", color = ctx.author.color, description = "The first 20 guilds of daddy bot")
