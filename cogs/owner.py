@@ -64,8 +64,8 @@ class owner(commands.Cog):
         em1 = discord.Embed(title=  "Guilds [1 - 20]", color = ctx.author.color, description = "The first 20 guilds of daddy bot")
         em2 = discord.Embed(title=  "Guilds [20 - 40]", color = ctx.author.color, description = "The next 20 guilds of daddy bot")
         em3 = discord.Embed(title=  "Guilds [40 - 60]", color = ctx.author.color, description = "The last 20 guilds of daddy bot")
-        for i in range(0, len(self.client.guilds)):
-            guild = self.client.guilds[i]
+        for i in range(0, len(self.bot.guilds)):
+            guild = self.bot.guilds[i]
             if i < 20:
                 em1.add_field(name = f"{guild.name}", value = f"```diff\n+ ID: {guild.id}\n+ Owner: {guild.owner}\n- Members: {guild.member_count}```")
             elif i > 20 and i < 40:
