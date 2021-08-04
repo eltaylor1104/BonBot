@@ -60,7 +60,7 @@ class mod(commands.Cog):
     Option("role", "a role to remove", Type.ROLE, required=True)])
     @slash_commands.has_permissions(manage_roles=True)
     @slash_commands.guild_only()
-    async def addrole(self, ctx, user, role):
+    async def removerole(self, ctx, user, role):
         await user.remove_roles(role)
         await ctx.send(f'{role} was removed from {user}.', ephemeral=True)
 
