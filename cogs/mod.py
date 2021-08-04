@@ -48,6 +48,14 @@ class mod(commands.Cog):
             await ctx.channel.purge(limit=amount)
             await ctx.send(f'Cleared {amount} messages.', ephemeral=True)
 
+    @slash_commands.command(name='addrole', description='Add a role to a specified user', guild_ids=test_ids, options=[Option("user", "a user to add a role to", Type.USER, required=True),
+    Options("role", "a role to add", Type.ROLE, required=True)])
+    @slash_commands.has_permissions(manage_roles=True)
+    @slash_commands.guild_only()
+    async def addrole(self, ctx, user, role):
+        await user.add_roles(role)
+        await ctx.send(f'{role} was added to {user}.', ephemeral=True)
+
 
 
 
