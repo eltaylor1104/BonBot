@@ -61,9 +61,9 @@ class owner(commands.Cog):
     @slash_commands.command(name='servers', description='view all servers that I am in')
     @slash_commands.is_owner()
     async def guilds(self, ctx):
-        em1 = discord.Embed(title=  "Guilds [1 - 20]", color = ctx.author.color, description = "The first 20 guilds of daddy bot")
-        em2 = discord.Embed(title=  "Guilds [20 - 40]", color = ctx.author.color, description = "The next 20 guilds of daddy bot")
-        em3 = discord.Embed(title=  "Guilds [40 - 60]", color = ctx.author.color, description = "The last 20 guilds of daddy bot")
+        em1 = discord.Embed(title=  "Guilds [1 - 20]", color = ctx.author.color, description = "The first 20 guilds of BonBot")
+        em2 = discord.Embed(title=  "Guilds [20 - 40]", color = ctx.author.color, description = "The next 20 guilds of BonBot")
+        em3 = discord.Embed(title=  "Guilds [40 - 60]", color = ctx.author.color, description = "The last 20 guilds of BonBot")
         for i in range(0, len(self.bot.guilds)):
             guild = self.bot.guilds[i]
             if i < 20:
