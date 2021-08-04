@@ -98,7 +98,7 @@ class utility(commands.Cog):
         await ctx.send(f"Message has been sent to {channel}", ephemeral=True)
 
 
-    @slash_commands.commands(name='bugreport', description='report a bug to my owner, make sure to include details!', guild_ids=test_ids, options=[Option('bug', 'a bug to report to my developer, make sure to include details!', Type.STRING, required=True)])
+    @slash_command.commands(name='bugreport', description='report a bug to my owner, make sure to include details!', guild_ids=test_ids, options=[Option('bug', 'a bug to report to my developer, make sure to include details!', Type.STRING, required=True)])
     async def bugreport(self, ctx, bug):
         channel = self.bot.get_channel(872374545372299274)
         await channel.send(f'{bug}')
