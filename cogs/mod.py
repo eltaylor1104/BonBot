@@ -25,6 +25,7 @@ class mod(commands.Cog):
         Option("reason", "specify a reason", Type.STRING, required=False)
         ])
     @slash_commands.has_guild_permissions(ban_members=True)
+    @slash_commands.guild_only()
     async def ban(self, ctx, user, reason = None):
         await user.ban(reason = reason)
         await ctx.create_response(f"{user} has been banned.", ephemeral=True)
@@ -35,6 +36,7 @@ class mod(commands.Cog):
         Option("reason", "specify a reason", Type.STRING, required=False)
         ])
     @slash_commands.has_guild_permissions(kick_members=True)
+    @slash_commands.guild_only()
     async def kick(self, ctx, user, reason = None):
         await user.kick(reason = reason)
         await ctx.create_response(f"{user} has been kicked.", ephemeral=True)

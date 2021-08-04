@@ -17,6 +17,8 @@ class utility(commands.Cog):
     # reply to message cmd
     @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", 
     options=[Option("link", "A message link or id for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
+    @slash_commands.guild_only()
+    @slash_commands.has_permissions(manage_messages=True)
     async def replycmd(self, ctx, link, message):
         c = commands.MessageConverter() # create instance
         msglink = await c.convert(ctx, link) 
@@ -28,6 +30,8 @@ class utility(commands.Cog):
     @slash_commands.command(name="react", description="makes me react to an existing message using the ID or message link.", 
     options=[Option("link", "A message link or id for me to reply to", Type.STRING, 
     required=True), Option("reaction", "The reaction to be added", Type.STRING, required=True)])
+    @slash_commands.guild_only()
+    @slash_commands.has_permissions(manage_messages=True)
     async def addreaction(self, ctx, link, reaction):
         c = commands.MessageConverter() # create instance
         mseglink = await c.convert(ctx, link) 
@@ -47,6 +51,7 @@ class utility(commands.Cog):
 		# because we didn't specify required=True in Options
 	])
     @slash_commands.has_permissions(manage_messages=True)
+    @slash_commands.guild_only()
     async def embed(self, inter, title=None, description=None, color=None, footer=None):
         # Converting color
         if color is not None:
@@ -87,6 +92,7 @@ class utility(commands.Cog):
         Option("channel", "select a channel for me to post a message in", Type.CHANNEL, required=True),
         Option("message", "Giv eme a message to relay in the channel", Type.STRING, required=True)])
     @slash_commands.has_permissions(manage_messages=True)
+    @slash_commands.guild_only()
     async def echo (self, ctx, channel, message):
         await channel.send(f"{message}")
         await ctx.send(f"Message has been sent to {channel}", ephemeral=True)
