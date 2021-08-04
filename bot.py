@@ -31,7 +31,7 @@ async def on_ready():
 @commands.is_owner()
 async def update(ctx):
 	updater = bot.get_command("jsk git")
-	await updater(ctx, argument=Codeblock("https://github.com/eltaylor1104/slash", "pull"))
+	await updater(ctx, argument=Codeblock("https://github.com/eltaylor1104/bonbot", "pull"))
 	bot.unload_extension('cogs.mod')
 	bot.load_extension('cogs.mod')
 	bot.unload_extension('cogs.utility')
