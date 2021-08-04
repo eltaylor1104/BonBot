@@ -106,6 +106,7 @@ class Reddit(commands.Cog):
 
 
   @slash_commands.command(name="reddit", description="get a random post from any subreddit", options=[Option("subreddit", "A subreddit to get a post from", Type.STRING, required=True)])
+  @slash_commands.guild_only()
   async def reddit(self, ctx, subreddit):
     if True:
       url = f"https://reddit.com/r/{subreddit}/random.json?limit=1"
@@ -138,6 +139,7 @@ class Reddit(commands.Cog):
 
 
   @slash_commands.command(description="Get a meme from a random meme subreddit")
+  @slash_commands.guild_only()
   async def meme(self, ctx):
     """Memes from various subreddits"""
     if True:
