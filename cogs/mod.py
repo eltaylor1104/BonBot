@@ -57,12 +57,15 @@ class mod(commands.Cog):
         await ctx.send(f'{role} was added to {user}.', ephemeral=True)
 
     @slash_commands.command(name='removerole', description='Remove a role from a specified user', options=[Option("user", "a user to remove a role from", Type.USER, required=True),
-    Option("role", "a role to remove", Type.ROLE, required=True)])
+    Option("role", "a role to remove", Type.ROLE, required=True)], guild_ids=test_ids)
     @slash_commands.has_permissions(manage_roles=True)
     @slash_commands.guild_only()
     async def removerole(self, ctx, user, role):
-        await user.remove_roles(role)
-        await ctx.send(f'{role} was removed from {user}.', ephemeral=True)
+        if role in user.roles:
+            await ctx.send(f'{user} does not have {role}.', ephemeral=True)
+        else:
+            await user.remove_roles(role)
+            await ctx.send(f'{role} was removed from {user}.', ephemeral=True)
 
 
 
