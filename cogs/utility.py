@@ -88,7 +88,7 @@ class utility(commands.Cog):
         await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands", ephemeral=True)
 
 
-    @slash.command(name="echo", description="Post a message in another channel", options=[
+    @slash_commands.command(name="echo", description="Post a message in another channel", options=[
         Option("channel", "select a channel for me to post a message in", Type.CHANNEL, required=True),
         Option("message", "Giv eme a message to relay in the channel", Type.STRING, required=True)])
     @slash_commands.has_permissions(manage_messages=True)
@@ -98,7 +98,7 @@ class utility(commands.Cog):
         await ctx.send(f"Message has been sent to {channel}", ephemeral=True)
 
 
-    @slash_command.commands(name='bugreport', description='report a bug to my owner, make sure to include details!', guild_ids=test_ids, options=[Option('bug', 'a bug to report to my developer, make sure to include details!', Type.STRING, required=True)])
+    @slash_commands.command(name='bugreport', description='report a bug to my owner, make sure to include details!', guild_ids=test_ids, options=[Option('bug', 'a bug to report to my developer, make sure to include details!', Type.STRING, required=True)])
     async def bugreport(self, ctx, bug):
         channel = self.bot.get_channel(872374545372299274)
         await channel.send(f'{bug}')
