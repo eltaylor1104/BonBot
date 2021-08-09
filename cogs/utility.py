@@ -14,7 +14,7 @@ class utility(commands.Cog):
         self.bot = bot
 
     @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", 
-    options=[Option("link", "A message link or id for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)], default_permissions=False)
+    options=[Option("link", "A message link or id for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
     @slash_commands.guild_only()
     @slash_commands.has_permissions(manage_messages=True)
     async def replycmd(self, ctx, link, message):
@@ -27,7 +27,7 @@ class utility(commands.Cog):
 
     @slash_commands.command(name="react", description="makes me react to an existing message using the ID or message link.", 
     options=[Option("link", "A message link or id for me to reply to", Type.STRING, 
-    required=True), Option("reaction", "The reaction to be added", Type.STRING, required=True)], default_permissions=False)
+    required=True), Option("reaction", "The reaction to be added", Type.STRING, required=True)])
     @slash_commands.guild_only()
     @slash_commands.has_permissions(manage_messages=True)
     async def addreaction(self, ctx, link, reaction):
@@ -47,7 +47,7 @@ class utility(commands.Cog):
 
 		# Note that all args are optional
 		# because we didn't specify required=True in Options
-	], default_permissions=False)
+	])
     @slash_commands.has_permissions(manage_messages=True)
     @slash_commands.guild_only()
     async def embed(self, inter, title=None, description=None, color=None, footer=None):
@@ -77,7 +77,7 @@ class utility(commands.Cog):
 
     @slash_commands.command(name="echo", description="Post a message in another channel", options=[
         Option("channel", "select a channel for me to post a message in", Type.CHANNEL, required=True),
-        Option("message", "Giv eme a message to relay in the channel", Type.STRING, required=True)], default_permissions=False)
+        Option("message", "Giv eme a message to relay in the channel", Type.STRING, required=True)])
     @slash_commands.has_permissions(manage_messages=True)
     @slash_commands.guild_only()
     async def echo (self, ctx, channel, message):
