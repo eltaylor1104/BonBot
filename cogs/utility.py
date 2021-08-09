@@ -13,48 +13,6 @@ class utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
-    @slash.command(name='help', description='see what I can do!', guild_ids=test_ids)
-    async def help_slash(self, ctx: SlashInteraction):
-        buttons = ActionRow(
-            Button(style=ButtonStyle.blurple, 
-            label="Fun Commands",
-            custom_id="fun"),
-            Button(style=ButtonStyle.blurple,
-            label="Utility Commands",
-            custom_id="utility"),
-            Button(style=ButtonStyle.blurple,
-            label="Moderation Commands",
-            custom_id="mod"))
-
-        msg = await ctx.send("I have a button!", components=[buttons])
-
-        # Here timeout=60 means that the listener will
-        # finish working after 60 seconds of inactivity
-        on_click = msg.create_click_listener(timeout=60)
-
-        @on_click.not_from_user(ctx.author, cancel_others=True, reset_timeout=False)
-        async def on_wrong_user(inter):
-            # Reply with a hidden message
-            await inter.reply("You're not the author", ephemeral=True)
-
-        @on_click.matching_id("fun")
-        async def on_fun_button(inter):
-            await inter.reply("You've clicked the `fun` button!")
-
-        @on_click.matching_id("utility")
-        async def on_utility_button(inter):
-            await inter.reply("You've clicked the `utility` button!")
-
-        @on_click.matching_id("mod")
-        async def on_mod_button(inter):
-            await inter.edit("You've clicked the `mod` button!")
-
-        @on_click.timeout
-        async def on_timeout():
-            await msg.edit(components=[])
-
-    # reply to message cmd
     @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", 
     options=[Option("link", "A message link or id for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)], default_permissions=False)
     @slash_commands.guild_only()

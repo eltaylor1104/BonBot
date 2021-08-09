@@ -16,10 +16,6 @@ class mod(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-
-
-
-
     @slash_commands.command(name="ban", description="Ban a user", options=[
         Option("user", "Specify a user to ban.", Type.USER, required=True),
         Option("reason", "specify a reason", Type.STRING, required=False)
