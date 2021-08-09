@@ -17,13 +17,13 @@ class utility(commands.Cog):
     @slash.command(name='help', description='see what I can do!', guild_ids=test_ids)
     async def help_slash(self, ctx: SlashInteraction):
         buttons = ActionRow(
-            Button(style=ButtonStyle.blue, 
+            Button(style=ButtonStyle.blurple, 
             label="Fun Commands",
             custom_id="fun"),
-            Button(style=ButtonStyle.blue,
+            Button(style=ButtonStyle.blurple,
             label="Utility Commands",
             custom_id="utility"),
-            Button(style=ButtonStyle.blue,
+            Button(style=ButtonStyle.blurple,
             label="Moderation Commands",
             custom_id="mod"))
 
