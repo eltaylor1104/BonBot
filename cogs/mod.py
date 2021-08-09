@@ -23,7 +23,7 @@ class mod(commands.Cog):
     @slash_commands.command(name="ban", description="Ban a user", options=[
         Option("user", "Specify a user to ban.", Type.USER, required=True),
         Option("reason", "specify a reason", Type.STRING, required=False)
-        ], default_permissions=False)
+        ])
     @slash_commands.has_guild_permissions(ban_members=True)
     @slash_commands.guild_only()
     async def ban(self, ctx, user, reason = None):
@@ -34,14 +34,14 @@ class mod(commands.Cog):
     @slash_commands.command(name="kick", description="Kick a user", options=[
         Option("user", "Specify a user to kick.", Type.USER, required=True),
         Option("reason", "specify a reason", Type.STRING, required=False)
-        ], default_permissions=False)
+        ])
     @slash_commands.has_guild_permissions(kick_members=True)
     @slash_commands.guild_only()
     async def kick(self, ctx, user, reason = None):
         await user.kick(reason = reason)
         await ctx.create_response(f"{user} has been kicked.", ephemeral=True)
 
-    @slash_commands.command(name="purge", description="Purge a given amount of messages", options=[Option("amount", "amount of messages to purge", Type.INTEGER, required=True)], default_permissions=False)
+    @slash_commands.command(name="purge", description="Purge a given amount of messages", options=[Option("amount", "amount of messages to purge", Type.INTEGER, required=True)])
     @slash_commands.has_permissions(manage_messages=True)
     @slash_commands.guild_only()
     async def clean(self, ctx, amount):
@@ -49,7 +49,7 @@ class mod(commands.Cog):
             await ctx.send(f'Cleared {amount} messages.', ephemeral=True)
 
     @slash_commands.command(name='addrole', description='Add a role to a specified user', options=[Option("user", "a user to add a role to", Type.USER, required=True),
-    Option("role", "a role to add", Type.ROLE, required=True)], default_permissions=False)
+    Option("role", "a role to add", Type.ROLE, required=True)])
     @slash_commands.has_permissions(manage_roles=True)
     @slash_commands.guild_only()
     async def addrole(self, ctx, user, role):
@@ -60,7 +60,7 @@ class mod(commands.Cog):
             await ctx.send(f'{role} was added to {user}.', ephemeral=True)
 
     @slash_commands.command(name='removerole', description='Remove a role from a specified user', options=[Option("user", "a user to remove a role from", Type.USER, required=True),
-    Option("role", "a role to remove", Type.ROLE, required=True)], default_permissions=False)
+    Option("role", "a role to remove", Type.ROLE, required=True)])
     @slash_commands.has_permissions(manage_roles=True)
     @slash_commands.guild_only()
     async def removerole(self, ctx, user, role):

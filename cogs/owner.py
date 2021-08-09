@@ -17,8 +17,12 @@ class owner(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-#f
-
+    @commands.Cog.listener()
+    async def on_message_edit(self, before, after):
+        if not after.author == self.bot.owner:
+            return
+        await self.bot.process_commands(after)
+'''
     @slash_commands.command(name='load', description="owner only", options=[Option("cog", "a cog to load", Type.STRING, required=True)], default_permissions=False)
     @slash_commands.is_owner()
     async def load(self, ctx, *, cog: str):
@@ -75,7 +79,7 @@ class owner(commands.Cog):
         paginator = DiscordUtils.Pagination.AutoEmbedPaginator(ctx)
         embeds = [em1, em2, em3]
         await paginator.run(embeds)
-
+'''
 
 def setup(bot):
     bot.add_cog(owner(bot))
