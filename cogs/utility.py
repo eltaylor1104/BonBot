@@ -69,17 +69,6 @@ class utility(commands.Cog):
         await inter.create_response(embed=emb, hide_user_input=True)
 
 
-    @slash_commands.command(name="ping", description="Shows my latency!")
-    async def ping(self, ctx):
-        if round(self.bot.latency*1000) <= 50:
-            embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0x44ff44)
-        elif round(self.bot.latency*1000) <= 100:
-            embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0xffd000)
-        elif round(self.bot.latency*1000) <= 200:
-            embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0xff6600)
-        else:
-            embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0x990000)
-        await ctx.send(embed=embed, ephemeral=True)
 
     @slash_commands.command(name="invite", description="Sends my invite!")
     async def invite(self, ctx):
