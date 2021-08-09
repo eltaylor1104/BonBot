@@ -48,7 +48,7 @@ class utility(commands.Cog):
 
         @on_click.matching_id("mod")
         async def on_mod_button(inter):
-            await msg.edit("You've clicked the `mod` button!")
+            await inter.edit("You've clicked the `mod` button!")
 
         @on_click.timeout
         async def on_timeout():
