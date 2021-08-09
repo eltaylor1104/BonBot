@@ -17,7 +17,7 @@ class owner(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
     
-
+#f
 
     @slash_commands.command(name='load', description="owner only", options=[Option("cog", "a cog to load", Type.STRING, required=True)], default_permissions=False)
     @slash_commands.is_owner()
