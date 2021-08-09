@@ -39,16 +39,16 @@ class utility(commands.Cog):
             await inter.reply("You're not the author", ephemeral=True)
 
         @on_click.matching_id("fun")
-        async def on_test_button(inter):
+        async def on_fun_button(inter):
             await inter.reply("You've clicked the `fun` button!")
 
         @on_click.matching_id("utility")
-        async def on_test_button(inter):
+        async def on_utility_button(inter):
             await inter.reply("You've clicked the `utility` button!")
 
         @on_click.matching_id("mod")
-        async def on_test_button(inter):
-            await inter.reply("You've clicked the `mod` button!")
+        async def on_mod_button(inter):
+            await msg.edit("You've clicked the `mod` button!")
 
         @on_click.timeout
         async def on_timeout():
