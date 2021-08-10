@@ -38,8 +38,6 @@ async def update(ctx):
 	bot.load_extension('cogs.utility')
 	bot.unload_extension('cogs.general')
 	bot.load_extension('cogs.general')
-	bot.unload_extension('cogs.owner')
-	bot.load_extension('cogs.owner')
 	bot.unload_extension('cogs.reddit')
 	bot.load_extension('cogs.reddit')
 
