@@ -41,7 +41,7 @@ class general(commands.Cog):
             embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0xff6600)
         else:
             embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0x990000)
-        await ctx.reply(embed=embed, ephemeral=True)
+        await ctx.send(embed=embed)
 
 
 
