@@ -45,7 +45,7 @@ class mod(commands.Cog):
             return
         else:
             await user.kick(reason = reason)
-            await ctx.create_response(f"{user} has been banned.", ephemeral=True)
+            await ctx.create_response(f"{user} has been kicked.", ephemeral=True)
 
     @slash_commands.command(name="purge", description="Purge a given amount of messages", options=[Option("amount", "amount of messages to purge", Type.INTEGER, required=True)])
     @slash_commands.has_permissions(manage_messages=True)
