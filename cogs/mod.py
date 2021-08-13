@@ -19,7 +19,7 @@ class mod(commands.Cog):
     @slash_commands.command(name="ban", description="Ban a user", options=[
         Option("user", "Specify a user to ban.", Type.USER, required=True),
         Option("reason", "specify a reason", Type.STRING, required=False)
-        ], guild_ids=test_ids)
+        ])
     @slash_commands.has_guild_permissions(ban_members=True)
     @slash_commands.guild_only()
     async def ban(self, ctx, user, reason = None):
@@ -39,8 +39,13 @@ class mod(commands.Cog):
     @slash_commands.has_guild_permissions(kick_members=True)
     @slash_commands.guild_only()
     async def kick(self, ctx, user, reason = None):
-        await user.kick(reason = reason)
-        await ctx.create_response(f"{user} has been kicked.", ephemeral=True)
+        me = await self.bot.fetch_user('494010761782231042')
+        if user == me:
+            await ctx.send("You can't kick the owner of the bot, you absolute moron! God damn it! Get a life!")
+            return
+        else:
+            await user.kick(reason = reason)
+            await ctx.create_response(f"{user} has been banned.", ephemeral=True)
 
     @slash_commands.command(name="purge", description="Purge a given amount of messages", options=[Option("amount", "amount of messages to purge", Type.INTEGER, required=True)])
     @slash_commands.has_permissions(manage_messages=True)
