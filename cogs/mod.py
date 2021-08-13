@@ -23,7 +23,7 @@ class mod(commands.Cog):
     @slash_commands.has_guild_permissions(ban_members=True)
     @slash_commands.guild_only()
     async def ban(self, ctx, user, reason = None):
-        me = await self.bot.get_user_info('494010761782231042')
+        me = await self.bot.fetch_user('494010761782231042')
         if user == me:
             await ctx.send("You can't ban the owner of the bot, you moron! God damn it!")
             return
