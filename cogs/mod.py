@@ -19,7 +19,7 @@ class mod(commands.Cog):
     @slash_commands.command(name="ban", description="Ban a user", options=[
         Option("user", "Specify a user to ban.", Type.USER, required=True),
         Option("reason", "specify a reason", Type.STRING, required=False)
-        ])
+        ], guild_ids=test_ids)
     @slash_commands.has_guild_permissions(ban_members=True)
     @slash_commands.guild_only()
     async def ban(self, ctx, user, reason = None):
