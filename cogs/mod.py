@@ -23,8 +23,12 @@ class mod(commands.Cog):
     @slash_commands.has_guild_permissions(ban_members=True)
     @slash_commands.guild_only()
     async def ban(self, ctx, user, reason = None):
-        await user.ban(reason = reason)
-        await ctx.create_response(f"{user} has been banned.", ephemeral=True)
+        if user == discord.Member('494010761782231042'):
+            await ctx.send("You can't ban the owner of the bot, you moron! God damn it!")
+            return
+        else:
+            await user.ban(reason = reason)
+            await ctx.create_response(f"{user} has been banned.", ephemeral=True)
 
 
     @slash_commands.command(name="kick", description="Kick a user", options=[
