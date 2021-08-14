@@ -23,12 +23,12 @@ DISCORDTOKEN = os.getenv('TOKEN')
 async def on_ready():
     print('BonBot is ready :D')
 
-    servers = len(client.guilds)
+    servers = len(bot.guilds)
     members = 0
-    for guild in client.guilds:
+    for guild in bot.guilds:
         members += guild.member_count - 1
 
-    await client.change_presence(activity = discord.Activity(
+    await bot.change_presence(activity = discord.Activity(
         type = discord.ActivityType.watching,
         name = f'{servers} servers and {members} members'
     ))
