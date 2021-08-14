@@ -59,13 +59,13 @@ for filename in os.listdir('./cogs'):
 
 @bot.command(name="status", hidden=True)
 async def status(ctx):
-    servers = len(bot.guilds)
-    members = 0
-    for guild in bot.guilds:
-        members += guild.member_count - 1
-    await bot.change_presence(activity = discord.Activity(
-        type = discord.ActivityType.watching,
-        name = f'{servers} servers, {members} members'))
+	servers = len(bot.guilds)
+	members = 0
+	for guild in bot.guilds:
+		members += guild.member_count - 1
+	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f'{servers} servers, {members} members'))
+	await ctx.message.add_reaction('✅')
+
 
 bot.load_extension('jishaku')
 bot.run(DISCORDTOKEN)
