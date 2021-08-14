@@ -56,7 +56,8 @@ async def on_slash_command_error(ctx, error):
 for filename in os.listdir('./cogs'):
 	if filename.endswith('.py'):
 		bot.load_extension(f'cogs.{filename[:-3]}')
-@bot.command()
+
+@bot.command(name="status", hidden=True)
 async def status(ctx):
     servers = len(bot.guilds)
     members = 0
