@@ -73,7 +73,7 @@ class utility(commands.Cog):
 
 
 
-    @slash_commands.command(name="invite", description="Sends my invite!")
+    @slash_commands.command(name="invite", description="Sends my invite!", guild_ids=test_ids)
     async def invite(self, ctx):
             servers = len(self.bot.guilds)
             members = 0
