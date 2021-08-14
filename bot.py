@@ -30,7 +30,7 @@ async def on_ready():
 
     await bot.change_presence(activity = discord.Activity(
         type = discord.ActivityType.watching,
-        name = f'{servers} servers and {members} members'
+        name = f'{servers} servers, {members} members'
     ))
 
 
@@ -56,6 +56,15 @@ async def on_slash_command_error(ctx, error):
 for filename in os.listdir('./cogs'):
 	if filename.endswith('.py'):
 		bot.load_extension(f'cogs.{filename[:-3]}')
+@bot.command()
+async def status(ctx):
+    servers = len(bot.guilds)
+    members = 0
+    for guild in bot.guilds:
+        members += guild.member_count - 1
+    await bot.change_presence(activity = discord.Activity(
+        type = discord.ActivityType.watching,
+        name = f'{servers} servers, {members} members'))
 
 bot.load_extension('jishaku')
 bot.run(DISCORDTOKEN)
