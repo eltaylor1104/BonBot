@@ -1,9 +1,11 @@
 import asyncio
+import DiscordUtils
 
 import discord
 from discord.ext import commands
 from dislash import *
 from jishaku.codeblocks import Codeblock, codeblock_converter
+
 
 bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
 slash = SlashClient(bot)
@@ -90,6 +92,25 @@ class utility(commands.Cog):
         channel = self.bot.get_channel(872374545372299274)
         await channel.send(f'<@494010761782231042> {bug} - {ctx.author.username}')
         await ctx.send("Your bug has been reported to my owner.", ephemeral=True)
+
+
+    @slash_commands.command(name='servers', description='view all servers that I am in')
+    @slash_commands.is_owner()
+    async def guilds(self, ctx):
+        em1 = discord.Embed(title=  "Guilds [1 - 20]", color = ctx.author.color, description = "The first 20 guilds of BonBot")
+        em2 = discord.Embed(title=  "Guilds [20 - 40]", color = ctx.author.color, description = "The next 20 guilds of BonBot")
+        em3 = discord.Embed(title=  "Guilds [40 - 60]", color = ctx.author.color, description = "The last 20 guilds of BonBot")
+        for i in range(0, len(self.bot.guilds)):
+            guild = self.bot.guilds[i]
+            if i < 20:
+                em1.add_field(name = f"{guild.name}", value = f"```diff\n+ ID: {guild.id}\n+ Owner: {guild.owner}\n- Members: {guild.member_count}```")
+            elif i > 20 and i < 40:
+                em2.add_field(name = f"{guild.name}", value = f"```diff\n+ ID: {guild.id}\n+ Owner: {guild.owner}\n- Members: {guild.member_count}```")
+            else:
+                em3.add_field(name = f"{guild.name}", value = f"```diff\n+ ID: {guild.id}\n+ Owner: {guild.owner}\n- Members: {guild.member_count}```")
+        paginator = DiscordUtils.Pagination.AutoEmbedPaginator(ctx)
+        embeds = [em1, em2, em3]
+        await paginator.run(embeds)
 
 
 
