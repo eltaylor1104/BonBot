@@ -80,7 +80,7 @@ class utility(commands.Cog):
             for guild in self.bot.guilds:
                 members += guild.member_count - 1
             embed = discord.Embed(title="Invite me!", description = "Click [here](https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands) to invite me! 🔗", color=discord.Color.blurple())
-            embed.set_footer(text=f"In {servers} servers and watching {members} members!", icon_url = self.bot.user.avatar_url)
+            embed.set_footer(text=f"In {servers} servers and watching {members} members!", icon_url="https://cdn.discordapp.com/attachments/807323728379772991/875921381752180736/mikey-removebg-preview-3.png")
             await ctx.send(embed=embed, ephemeral=True)
 
 
