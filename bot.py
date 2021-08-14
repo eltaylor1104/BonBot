@@ -20,10 +20,18 @@ test_ids = [804935799316676629] # Put your server ID in this array
 DISCORDTOKEN = os.getenv('TOKEN')
 
 @bot.event
-async def on_ready(): 
-	print("Bot is online.")
-	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="/meme | BonBot™️"))
-	print("Status has been changed.")
+async def on_ready():
+    print('BonBot is ready :D')
+
+    servers = len(client.guilds)
+    members = 0
+    for guild in client.guilds:
+        members += guild.member_count - 1
+
+    await client.change_presence(activity = discord.Activity(
+        type = discord.ActivityType.watching,
+        name = f'{servers} servers and {members} members'
+    ))
 
 
 

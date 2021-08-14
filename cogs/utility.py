@@ -72,9 +72,17 @@ class utility(commands.Cog):
 
 
 
+
     @slash_commands.command(name="invite", description="Sends my invite!")
     async def invite(self, ctx):
-        await ctx.send("https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands", ephemeral=True)
+            servers = len(client.guilds)
+            members = 0
+            for guild in client.guilds:
+                members += guild.member_count - 1
+            embed = discord.Embed(title="Invite me!", description = "Click [here](https://discord.com/api/oauth2/authorize?client_id=871145925425397810&permissions=261455605623&scope=bot%20applications.commands) to invite me! 🔗")
+            embed.set_footer(f"in {servers} servers and watching {members} members!")
+            embed.set_color(discord.Color.blurple)
+            await ctx.send(embed=embed, ephemeral=True)
 
 
     @slash_commands.command(name="echo", description="Post a message in another channel", options=[
