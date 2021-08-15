@@ -97,7 +97,7 @@ class utility(commands.Cog):
     @slash_commands.command(name='bugreport', description='report a bug to my owner, make sure to include details!', options=[Option('bug', 'a bug to report to my developer, make sure to include details!', Type.STRING, required=True)])
     async def bugreport(self, ctx, bug):
         channel = self.bot.get_channel(872374545372299274)
-        await channel.send(f'<@494010761782231042> {bug} - {ctx.author.username}')
+        await channel.send(f'<@494010761782231042> {bug} - {ctx.author.name}#{ctx.author.discriminator}')
         await ctx.send("Your bug has been reported to my owner.", ephemeral=True)
 
 
