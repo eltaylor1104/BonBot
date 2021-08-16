@@ -6,7 +6,6 @@ jishaku
 pymongo
 aiohttp
 urllib3
-random
 requests
 datetime
 DiscordUtils
