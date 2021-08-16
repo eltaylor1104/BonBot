@@ -640,7 +640,7 @@ class GeneralCog(commands.Cog):
 
 		if await self.bot.is_owner(ctx.author):
 			for guild in self.bot.guilds:
-				insert_prefix(guild.id, 'r$')
+				insert_prefix(guild.id, 'b!')
 
 			await ctx.send("All servers have their prefixes overridden")
 		else:
