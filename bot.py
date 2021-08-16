@@ -11,26 +11,19 @@ from discord import Intents
 
 load_dotenv()
 
+def get_prefix(bot, message):
+	return fetch_prefix(message.guild.id)["prefix"]
 
 bot = commands.Bot(intents=discord.Intents.all(), command_prefix=get_prefix)
 slash = SlashClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
-def get_prefix(bot, message):
 
-	return fetch_prefix(message.guild.id)["prefix"]
 
 
 
 DISCORDTOKEN = os.getenv('TOKEN')
-CONNECTION_URL = os.getenv('MONGO_KEY')
 
-
-cluster = MongoClient("CONNECTION_URL")
-
-db = cluster["BonBot"]
-
-collection = db["UserData"]
 
 @bot.event
 async def on_ready():
