@@ -14,7 +14,7 @@ load_dotenv()
 def get_prefix(bot, message):
 	return fetch_prefix(message.guild.id)["prefix"]
 
-bot = commands.Bot(intents=discord.Intents.all(), command_prefix=get_prefix)
+bot = commands.Bot(intents=discord.Intents.all(), command_prefix="b!")
 slash = SlashClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
