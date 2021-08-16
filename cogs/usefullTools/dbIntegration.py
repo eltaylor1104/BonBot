@@ -4,7 +4,7 @@ import os
 
 mongodbclient_token = os.getenv("CONNECTION_URL")
 
-
+cluster = MongoClient(mongodbclient_token)
 
 db = cluster["BonBot"]
 collection = db["warnings"]
