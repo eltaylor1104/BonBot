@@ -22,21 +22,6 @@ print("Database connection has been established\n")
 
 
 
-
-db = cluster["BonBot"]
-collection = db["warnings"]
-warnthresh_collection = db["warnthresh"]
-prefix_collection = db["prefixes"]
-
-mod_log_channel_collection = db["mod_log"]
-join_log_channel_collection  = db["join_log"]
-leave_log_channel_collection = db["leave_log"]
-message_log_channel_collection = db["message_log"]
-
-mute_role_collection = db["mute_role"]
-
-print("Database connection has been established\n")
-
 # ----------------------------------------------------------    Warnings     --------------------------------------------------------------
 
 def insert_warns(guild_id, member_id, mod_id, warning):
