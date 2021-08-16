@@ -4,7 +4,7 @@ import os
 
 mongodbclient_token = os.getenv("CONNECTION_URL")
 
-cluster = pymongo.MongoClient(mongodbclient_token)
+cluster = pymongo.MongoClient("mongodb+srv://bonfire:bonfire@slash.yr0ru.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
 
 db = cluster.BonBot
 collection = db["warnings"]
