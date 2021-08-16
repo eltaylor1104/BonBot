@@ -10,3 +10,7 @@ random
 requests
 datetime
 DiscordUtils
+wikipedia
+howdoi
+googletrans
+psutil
