@@ -1,5 +1,5 @@
 import os
-
+from cogs.usefullTools.dbIntegration import *
 import discord
 import dislash
 import jishaku
@@ -7,6 +7,7 @@ from discord.ext import commands
 from dislash import *
 from dotenv import load_dotenv
 from jishaku.codeblocks import Codeblock, codeblock_converter
+from discord import Intents
 
 load_dotenv()
 
