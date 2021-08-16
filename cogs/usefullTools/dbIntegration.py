@@ -4,9 +4,9 @@ import os
 
 mongodbclient_token = os.getenv("CONNECTION_URL")
 
-cluster = MongoClient(mongodbclient_token)
+cluster = pymongo.MongoClient(mongodbclient_token)
 
-db = cluster["BonBot"]
+db = cluster.BonBot
 collection = db["warnings"]
 warnthresh_collection = db["warnthresh"]
 guilds = db["guild_channels"]

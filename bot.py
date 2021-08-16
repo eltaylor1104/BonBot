@@ -178,7 +178,7 @@ async def on_guild_channel_delete(channel):
 @bot.event
 async def on_guild_join(guild):
 
-	insert_prefix(guild.id, "r$")
+	insert_prefix(guild.id, "b!")
 
 
 @bot.event
