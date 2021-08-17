@@ -1637,7 +1637,7 @@ class ModerationCog(commands.Cog):
     # Display infractions of the user
 
     @commands.command(name='warns', aliases=['warnings'])
-    async def warns(self, ctx, member):
+    async def warns(self, ctx, member: discord.Member):
         if ctx.message.author.guild_permissions.manage_roles:
 
             if member[0] == '<' and member[1] == '@':
