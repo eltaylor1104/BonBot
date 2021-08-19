@@ -1,5 +1,5 @@
 import os
-from cogs.usefullTools.dbIntegration import *
+
 import discord
 import dislash
 import jishaku
@@ -11,8 +11,7 @@ from discord import Intents
 
 load_dotenv()
 
-def get_prefix(bot, message):
-	return fetch_prefix(message.guild.id)["prefix"]
+
 
 bot = commands.Bot(intents=discord.Intents.all(), command_prefix="b!")
 slash = SlashClient(bot)
@@ -46,20 +45,10 @@ async def on_ready():
 async def update(ctx):
 	updater = bot.get_command("jsk git")
 	await updater(ctx, argument=Codeblock("https://github.com/eltaylor1104/bonbot", "pull"))
-	bot.unload_extension('cogs.mod')
-	bot.load_extension('cogs.mod')
-	bot.unload_extension('cogs.utility')
-	bot.load_extension('cogs.utility')
-	bot.unload_extension('cogs.general')
-	bot.load_extension('cogs.general')
-	bot.unload_extension('cogs.reddit')
-	bot.load_extension('cogs.reddit')
-	bot.unload_extension('cogs.Utils')
-	bot.load_extension('cogs.Utils')
-	bot.unload_extension('cogs.config')
-	bot.load_extension('cogs.config')
-	bot.unload_extension('cogs.moderation')
-	bot.load_extension('cogs.moderation')
+	for filename in os.listdir('./cogs'):
+		if filename.endswith('.py'):
+			bot.unload_extension(f'cogs.{filename[:-3]}')
+			bot.load_extension(f'cogs.{filename[:-3]}')
 
 @slash.event
 async def on_slash_command_error(ctx, error):
