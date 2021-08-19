@@ -7,7 +7,7 @@ from dislash import *
 from jishaku.codeblocks import Codeblock, codeblock_converter
 
 
-bot = commands.Bot()
+bot = commands.Bot(command_prefix="b!")
 inter = InteractionClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
