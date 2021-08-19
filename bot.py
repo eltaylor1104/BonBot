@@ -14,7 +14,7 @@ load_dotenv()
 
 
 bot = commands.Bot(intents=discord.Intents.all(), command_prefix="b!")
-slash = SlashClient(bot)
+inter = InteractionClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
 
@@ -50,7 +50,7 @@ async def update(ctx):
 			bot.unload_extension(f'cogs.{filename[:-3]}')
 			bot.load_extension(f'cogs.{filename[:-3]}')
 
-@slash.event
+@inter.event
 async def on_slash_command_error(ctx, error):
 	await ctx.send(f'{error}', ephemeral=True)
 

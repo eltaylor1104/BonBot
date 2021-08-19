@@ -14,7 +14,7 @@ from dislash import *
 FIFTEEN_MINUTES = 900
 
 bot = commands.Bot(intents=discord.Intents.all(), command_prefix="s!")
-slash = SlashClient(bot)
+inter = InteractionClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
 
@@ -105,8 +105,8 @@ class Reddit(commands.Cog):
     self.client = client
 
 
-  @slash_commands.command(name="reddit", description="get a random post from any subreddit", options=[Option("subreddit", "A subreddit to get a post from", Type.STRING, required=True)])
-  @slash_commands.guild_only()
+  @slash_command(name="reddit", description="get a random post from any subreddit", options=[Option("subreddit", "A subreddit to get a post from", Type.STRING, required=True)])
+  @slash_command.guild_only()
   async def reddit(self, ctx, subreddit):
     if True:
       url = f"https://reddit.com/r/{subreddit}/random.json?limit=1"
@@ -138,8 +138,8 @@ class Reddit(commands.Cog):
 
 
 
-  @slash_commands.command(description="Get a meme from a random meme subreddit")
-  @slash_commands.guild_only()
+  @slash_command(description="Get a meme from a random meme subreddit")
+  @slash_command.guild_only()
   async def meme(self, ctx):
     """Memes from various subreddits"""
     if True:
