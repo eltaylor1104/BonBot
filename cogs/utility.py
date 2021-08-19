@@ -17,7 +17,6 @@ class utility(commands.Cog):
 
     @slash_command(name="reply", description="makes me reply to an existing message using the ID", 
     options=[Option("link", "A message link or id for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
-    @slash_command.guild_only()
     @slash_command.has_permissions(manage_messages=True)
     async def replycmd(self, ctx, link, message):
         c = commands.MessageConverter() # create instance
