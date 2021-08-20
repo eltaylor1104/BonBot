@@ -15,7 +15,7 @@ class utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", 
+    @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID or message link", 
     options=[Option("link", "A message link or id for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
     @slash_commands.has_permissions(manage_messages=True)
     @slash_commands.guild_only()
@@ -39,38 +39,6 @@ class utility(commands.Cog):
         await ctx.send("The reaction was added!", ephemeral=True)
 
 
-    @slash_commands.command(
-	description="Builds a custom embed",
-	options=[
-		Option('title', 'Makes the title of the embed', Type.STRING),
-		Option('description', 'Makes the description', Type.STRING),
-		Option('color', 'The color of the embed', Type.STRING),
-        Option('footer', 'The footer of the embed', Type.STRING)
-
-		# Note that all args are optional
-		# because we didn't specify required=True in Options
-	])
-    @slash_commands.has_permissions(manage_messages=True)
-    @slash_commands.guild_only()
-    async def embed(self, inter, title=None, description=None, color=None, footer=None):
-        # Converting color
-        if color is not None:
-            try:
-                color = await commands.ColorConverter().convert(inter, color)
-            except:
-                color = None
-        if color is None:
-            color = discord.Color.default()
-        # Generating an embed
-        emb = discord.Embed(color=color)
-        if title is not None:
-            emb.title = title
-        if description is not None:
-            emb.description = description
-        # Sending the output
-        await inter.create_response(embed=emb, hide_user_input=True)
-
-
 
 
     @slash_commands.command(name="invite", description="Sends my invite!")
@@ -90,8 +58,11 @@ class utility(commands.Cog):
     @slash_commands.has_permissions(manage_messages=True)
     @slash_commands.guild_only()
     async def echo (self, ctx, channel, message):
-        await channel.send(f"{message}")
-        await ctx.send(f"Message has been sent to {channel}", ephemeral=True)
+        try:
+            await channel.send(f"{message}")
+            await ctx.send(f"Message has been sent to {channel}", ephemeral=True)
+        except discord.Forbidden:
+            await ctx.send('I couldn\'t send the message. Please be sure I have access to the channel.', ephemeral=True)
 
 
     @slash_commands.command(name='bugreport', description='report a bug to my owner, make sure to include details!', options=[Option('bug', 'a bug to report to my developer, make sure to include details!', Type.STRING, required=True)])
@@ -119,6 +90,21 @@ class utility(commands.Cog):
         embeds = [em1, em2, em3]
         await paginator.run(embeds)
 
+    @slash_commands.command(name="help", description="See what I can do!")
+    async def help(self, ctx):
+        embed = discord.Embed(title="About BonBot™️!", color=ctx.author.color)
+        embed.set_description("I am an epic bot created by **judger#6969**. All of my commands are seen and run via slash commands, you may view those by typing `/` in a chat that you have the `Use Slash Commands` permission. You may also see this message by using the command `b!help`.")
+        embed.add_field("[View my source code](https://github.com/eltaylor1104/BonBot) | [Join my support server](https://discord.gg/zVkkfbB7EN)")
+        embed.set_footer(text="created by judger#6969", icon_url="https://cdn.discordapp.com/attachments/878365588915912764/878366239918026812/mikey-removebg-preview-3.png")
+        await ctx.send(embed=embed)
+
+    @commands.command(name="help", description="See what I can do!")
+    async def help(self, ctx):
+        embed = discord.Embed(title="About BonBot™️!", color=ctx.author.color)
+        embed.set_description("I am an epic bot created by **judger#6969**. All of my commands are seen and run via slash commands, you may view those by typing `/` in a chat that you have the `Use Slash Commands` permission. You may also see this message by using the command `b!help`.")
+        embed.add_field("[View my source code](https://github.com/eltaylor1104/BonBot) | [Join my support server](https://discord.gg/zVkkfbB7EN)")
+        embed.set_footer(text="created by judger#6969", icon_url="https://cdn.discordapp.com/attachments/878365588915912764/878366239918026812/mikey-removebg-preview-3.png")
+        await ctx.send(embed=embed)
 
 
 

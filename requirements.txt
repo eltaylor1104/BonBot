@@ -9,3 +9,4 @@ urllib3
 requests
 datetime
 DiscordUtils
+Unidecode
