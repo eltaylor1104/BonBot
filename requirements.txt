@@ -9,7 +9,3 @@ urllib3
 requests
 datetime
 DiscordUtils
-wikipedia
-howdoi
-googletrans
-psutil
