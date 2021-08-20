@@ -13,7 +13,7 @@ load_dotenv()
 
 
 
-bot = commands.Bot(intents=discord.Intents.all(), command_prefix="b!", help_command=None)
+bot = commands.Bot(intents=discord.Intents.all(), command_prefix="b!", help_command="about")
 inter = InteractionClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
