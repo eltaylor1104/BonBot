@@ -79,7 +79,7 @@ async def ping(ctx):
 async def help(ctx):
 	embed = discord.Embed(title="About BonBot™️!", color=ctx.author.color, description="I am an epic bot created by **judger#6969**. All of my commands are seen and run via slash commands, you may view them by typing `/` in a chat that you have the `Use Slash Commands` permission in. You may also see this message by using the command `b!help`.")
 	embed.add_field(name="About me!", value="[View my source code](https://github.com/eltaylor1104/BonBot) | [Join my support server](https://discord.gg/zVkkfbB7EN)")
-	embed,set_image(url="https://cdn.discordapp.com/attachments/878365588915912764/878366239918026812/mikey-removebg-preview-3.png")
+	embed.set_image(url="https://cdn.discordapp.com/attachments/878365588915912764/878366239918026812/mikey-removebg-preview-3.png")
 	embed.set_footer(text="Created by judger#6969", icon_url="https://cdn.discordapp.com/attachments/878365588915912764/878366239918026812/mikey-removebg-preview-3.png")
 	await ctx.send(embed=embed)
 
