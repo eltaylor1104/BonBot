@@ -76,6 +76,25 @@ class mod(commands.Cog):
             await user.remove_roles(role)
             await ctx.send(f'{role} was removed from {user}.', ephemeral=True)
 
+    @commands.command(description='Decancer a member.')
+    async def decancer(self, ctx, member : discord.Member):
+        """"Decancer" a member, or strip all the non-ASCII characters from their name. Useful to make your chat look good."""
+        if ctx.me.permissions_in(ctx.channel).manage_nicknames and ctx.author.permissions_in(ctx.channel).manage_nicknames:
+            cancer = member.display_name
+            decancer = unidecode.unidecode_expect_nonascii(cancer)
+            # decancer = re.sub(r'\D\W', '', decancer)
+            if len(decancer) > 32:
+                decancer = decancer[0:32-3] + "..."
+            try:
+                await member.edit(nick=decancer)
+                await ctx.send(f'Successfully decancered {cancer} to ​`{decancer}​`.')
+            except discord.Forbidden:
+                await ctx.send('I couldn\'t decancer this member. Please move my role higher.')
+        else:
+            cancer = member.display_name
+            decancer = unidecode.unidecode_expect_nonascii(cancer)
+            await ctx.send(f'The decancered version of {cancer} is ​`{decancer}​`.')
+
 
 
 
