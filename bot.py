@@ -77,11 +77,10 @@ async def ping(ctx):
 
 @bot.command(name="help", description="See what I can do!")
 async def help(ctx):
-	embed = discord.Embed(title="About BonBot™️!", color=ctx.author.color)
-	embed.set_description("I am an epic bot created by **judger#6969**. All of my commands are seen and run via slash commands, you may view those by typing `/` in a chat that you have the `Use Slash Commands` permission. You may also see this message by using the command `/help.`")
-	embed.add_field("[View my source code](https://github.com/eltaylor1104/BonBot) | [Join my support server](https://discord.gg/zVkkfbB7EN)")
-	embed.set_footer(text="created by judger#6969", icon_url="https://cdn.discordapp.com/attachments/878365588915912764/878366239918026812/mikey-removebg-preview-3.png")
-	await ctx.send(embed=embed)
+    embed = discord.Embed(title="About BonBot™️!", color=ctx.author.color, description="I am an epic bot created by **judger#6969**. All of my commands are seen and run via slash commands, you may view those by typing `/` in a chat that you have the `Use Slash Commands` permission. You may also see this message by using the command `b!help`.")
+    embed.add_field("[View my source code](https://github.com/eltaylor1104/BonBot) | [Join my support server](https://discord.gg/zVkkfbB7EN)")
+    embed.set_footer(text="created by judger#6969", icon_url="https://cdn.discordapp.com/attachments/878365588915912764/878366239918026812/mikey-removebg-preview-3.png")
+    await ctx.send(embed=embed)
 
 
 
