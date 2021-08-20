@@ -13,7 +13,8 @@ load_dotenv()
 
 
 
-bot = commands.Bot(intents=discord.Intents.all(), command_prefix="b!", help_command="about")
+bot = commands.Bot(intents=discord.Intents.all(), command_prefix="b!")
+bot.remove_command("help")
 inter = InteractionClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
@@ -74,7 +75,7 @@ async def status(ctx):
 async def ping(ctx):
 	await ctx.send(f'Ping: {round(bot.latency * 1000)}ms')
 
-@bot.command(name="about", description="See what I can do!")
+@bot.command(name="help", description="See what I can do!")
 async def help(ctx):
 	embed = discord.Embed(title="About BonBot™️!", color=ctx.author.color)
 	embed.set_description("I am an epic bot created by **judger#6969**. All of my commands are seen and run via slash commands, you may view those by typing `/` in a chat that you have the `Use Slash Commands` permission. You may also see this message by using the command `/help.`")
