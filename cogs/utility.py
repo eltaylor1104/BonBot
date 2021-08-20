@@ -15,10 +15,10 @@ class utility(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @slash_command(name="reply", description="makes me reply to an existing message using the ID", 
+    @slash_commands.command(name="reply", description="makes me reply to an existing message using the ID", 
     options=[Option("link", "A message link or id for me to reply to", Type.STRING, required=True), Option("message", "The content of the reply", Type.STRING, required=True)])
-    @slash_command.has_permissions(manage_messages=True)
-    @slash_command.guild_only()
+    @slash_commands.has_permissions(manage_messages=True)
+    @slash_commands.guild_only()
     async def replycmd(self, ctx, link, message):
         c = commands.MessageConverter() # create instance
         msglink = await c.convert(ctx, link) 
@@ -27,11 +27,11 @@ class utility(commands.Cog):
 
 
 
-    @slash_command(name="react", description="makes me react to an existing message using the ID or message link.", 
+    @slash_commands.command(name="react", description="makes me react to an existing message using the ID or message link.", 
     options=[Option("link", "A message link or id for me to reply to", Type.STRING, 
     required=True), Option("reaction", "The reaction to be added", Type.STRING, required=True)])
-    @slash_command.guild_only()
-    @slash_command.has_permissions(manage_messages=True)
+    @slash_commands.guild_only()
+    @slash_commands.has_permissions(manage_messages=True)
     async def addreaction(self, ctx, link, reaction):
         c = commands.MessageConverter() # create instance
         mseglink = await c.convert(ctx, link) 
@@ -39,7 +39,7 @@ class utility(commands.Cog):
         await ctx.send("The reaction was added!", ephemeral=True)
 
 
-    @slash_command(
+    @slash_commands.command(
 	description="Builds a custom embed",
 	options=[
 		Option('title', 'Makes the title of the embed', Type.STRING),
@@ -50,8 +50,8 @@ class utility(commands.Cog):
 		# Note that all args are optional
 		# because we didn't specify required=True in Options
 	])
-    @slash_command.has_permissions(manage_messages=True)
-    @slash_command.guild_only()
+    @slash_commands.has_permissions(manage_messages=True)
+    @slash_commands.guild_only()
     async def embed(self, inter, title=None, description=None, color=None, footer=None):
         # Converting color
         if color is not None:
@@ -73,7 +73,7 @@ class utility(commands.Cog):
 
 
 
-    @slash_command(name="invite", description="Sends my invite!")
+    @slash_commands.command(name="invite", description="Sends my invite!")
     async def invite(self, ctx):
             servers = len(self.bot.guilds)
             members = 0
@@ -83,26 +83,26 @@ class utility(commands.Cog):
             embed.set_footer(text=f"In {servers} servers and watching {members} members!", icon_url="https://cdn.discordapp.com/attachments/807323728379772991/875921381752180736/mikey-removebg-preview-3.png")
             await ctx.send(embed=embed, ephemeral=True)
 
-
-    @slash_command(name="echo", description="Post a message in another channel", options=[
+#TODO: fix echo cmd
+    @slash_commands.command(name="echo", description="Post a message in another channel", options=[
         Option("channel", "select a channel for me to post a message in", Type.CHANNEL, required=True),
         Option("message", "Give me a message to relay in the channel", Type.STRING, required=True)])
-    @slash_command.has_permissions(manage_messages=True)
-    @slash_command.guild_only()
+    @slash_commands.has_permissions(manage_messages=True)
+    @slash_commands.guild_only()
     async def echo (self, ctx, channel, message):
         await channel.send(f"{message}")
         await ctx.send(f"Message has been sent to {channel}", ephemeral=True)
 
 
-    @slash_command(name='bugreport', description='report a bug to my owner, make sure to include details!', options=[Option('bug', 'a bug to report to my developer, make sure to include details!', Type.STRING, required=True)])
+    @slash_commands.command(name='bugreport', description='report a bug to my owner, make sure to include details!', options=[Option('bug', 'a bug to report to my developer, make sure to include details!', Type.STRING, required=True)])
     async def bugreport(self, ctx, bug):
         channel = self.bot.get_channel(872374545372299274)
         await channel.send(f'<@494010761782231042> {bug} - {ctx.author.name}#{ctx.author.discriminator}')
         await ctx.send("Your bug has been reported to my owner.", ephemeral=True)
 
 
-    @slash_command(name='servers', description='view all servers that I am in')
-    @slash_command.is_owner()
+    @slash_commands.command(name='servers', description='view all servers that I am in')
+    @slash_commands.is_owner()
     async def guilds(self, ctx):
         em1 = discord.Embed(title=  "Guilds [1 - 20]", color = ctx.author.color, description = "The first 20 guilds of BonBot")
         em2 = discord.Embed(title=  "Guilds [20 - 40]", color = ctx.author.color, description = "The next 20 guilds of BonBot")

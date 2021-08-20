@@ -18,7 +18,7 @@ class general(commands.Cog):
         self.bot = bot
     
 
-    @slash_command(name="rickroll", description="Countdown to a rickroll!", options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER, required=True)])
+    @slash_commands.command(name="rickroll", description="Countdown to a rickroll!", options=[Option("time", "Amount of time until the rickroll!", Type.INTEGER, required=True)])
     async def countdown_to_rickroll(self, ctx, time:int):
         if time > 1000:
             await ctx.send("Nah. Too long.")
@@ -31,7 +31,7 @@ class general(commands.Cog):
             await one.edit(content=f"Rickrolling you in {count}")
         await one.edit(content="https://youtu.be/dQw4w9WgXcQ")
 
-    @slash_command(name="ping", description="Shows my latency!")
+    @slash_commands.command(name="ping", description="Shows my latency!")
     async def ping(self, ctx):
         if round(self.bot.latency*1000) <= 50:
             embed=discord.Embed(title="PING", description=f":ping_pong: Pong! The ping is **{round(self.bot.latency*1000)}** milliseconds!", color=0x44ff44)
