@@ -83,7 +83,7 @@ class utility(commands.Cog):
             embed.set_footer(text=f"In {servers} servers and watching {members} members!", icon_url="https://cdn.discordapp.com/attachments/807323728379772991/875921381752180736/mikey-removebg-preview-3.png")
             await ctx.send(embed=embed, ephemeral=True)
 
-#TODO: fix echo cmd
+
     @slash_commands.command(name="echo", description="Post a message in another channel", options=[
         Option("channel", "select a channel for me to post a message in", Type.CHANNEL, required=True),
         Option("message", "Give me a message to relay in the channel", Type.STRING, required=True)])
