@@ -60,11 +60,9 @@ class mod(commands.Cog):
     Option("role", "a role to add", Type.ROLE, required=True)])
     @slash_commands.has_permissions(manage_roles=True)
     @slash_commands.guild_only()
-    async def addrole(self, ctx, user, role):
+    async def addrole(self, ctx, user, role : discord.Role):
         if role in user.roles:
             await ctx.send(f'{user} already has {role}.', ephemeral=True)
-        if role.position > ctx.author.top_role.position: #if the role is above users top role it sends error
-            return await ctx.send('**:x: | That role is above your top role!**', ephemeral=True)
         else:
             await user.add_roles(role)
             await ctx.send(f'{role} was added to {user}.', ephemeral=True)
@@ -73,11 +71,9 @@ class mod(commands.Cog):
     Option("role", "a role to remove", Type.ROLE, required=True)])
     @slash_commands.has_permissions(manage_roles=True)
     @slash_commands.guild_only()
-    async def removerole(self, ctx, user, role):
+    async def removerole(self, ctx, user, role: discord.Role):
         if role not in user.roles:
             await ctx.send(f'{user} does not have {role}.', ephemeral=True)
-        if role.position > ctx.author.top_role.position: #if the role is above users top role it sends error
-            return await ctx.send('**:x: | That role is above your top role!**', ephemeral=True)
         else:
             await user.remove_roles(role)
             await ctx.send(f'{role} was removed from {user}.', ephemeral=True)
