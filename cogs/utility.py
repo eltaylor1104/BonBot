@@ -10,6 +10,7 @@ from jishaku.codeblocks import Codeblock, codeblock_converter
 bot = commands.Bot(command_prefix="b!")
 inter = InteractionClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
+bonbot_support = [878362882323120128]
 
 class utility(commands.Cog):
     def __init__(self, bot):
@@ -72,7 +73,7 @@ class utility(commands.Cog):
         await ctx.send("Your bug has been reported to my owner.", ephemeral=True)
 
 
-    @slash_commands.command(name='servers', description='view all servers that I am in')
+    @slash_commands.command(name='servers', description='OWNER ONLY, view all servers that I am in', guild_ids=bonbot_support)
     @slash_commands.is_owner()
     async def guilds(self, ctx):
         em1 = discord.Embed(title=  "Guilds [1 - 20]", color = ctx.author.color, description = "The first 20 guilds of BonBot")
@@ -92,7 +93,7 @@ class utility(commands.Cog):
 
     @slash_commands.command(name="help", description="See what I can do!")
     async def help(self, ctx):
-        embed = discord.Embed(title="About BonBot™️!", color=ctx.author.color, description="I am an epic bot created by **judger#6969**. All of my commands are seen and run via slash commands, you may view them by typing `/` in a chat that you have the `Use Slash Commands` permission in. You may also see this message by using the command `b!help`.")
+        embed = discord.Embed(title="About BonBot™️!", color=ctx.author.color, description="I am an epic bot created by **judger#6969**. All of my commands are seen and run via slash commands, you may view them by typing `/` in a chat that you have the `Use Slash Commands` permission in. You may also see this message by using the command `b!help`.\n**My Commands:**\n\n`/addrole`: adds the specified role to the specified user\n`/ban`: Bans the specified user\n`/bugreport`: Reports a bug to my owner\n`/decancer:` removes cancerous characters from a members nickname/username\n`/echo`: sends a message in a specified channel through me\n`/help`: Shows this message\n`/invite`: Shows my invite link\n`/kick`: Kicks a specified user\n`/meme`: Gets a meme from a random meme subreddit\n`/ping`: Shows my latency\n`/purge`: Deletes a specified amount of messsages\n`/reddit`: Get a random post from any specified subreddit\n`/react`: Makes me react to a specified message with a specified reaction. (Make sure I'm in the server that the emoji is from!)\n`/removerole`: Removes a specified role from the specified user\n`/reply`: Makes me reply to a specified message\n`/rickroll`: Sends a countdown with the specified number of seconds, at the end a rickroll will be posted!")
         embed.add_field(name="About me!", value="[View my source code](https://github.com/eltaylor1104/BonBot) | [Join my support server](https://discord.gg/zVkkfbB7EN)")
         embed.set_image(url="https://cdn.discordapp.com/attachments/878365588915912764/878366239918026812/mikey-removebg-preview-3.png")
         embed.set_footer(text="Created by judger#6969", icon_url="https://cdn.discordapp.com/attachments/878365588915912764/878366239918026812/mikey-removebg-preview-3.png")
