@@ -18,7 +18,7 @@ inter = InteractionClient(bot)
 test_ids = [804935799316676629] # Put your server ID in this array
 
 
-#CREDIT TO BobDotCom on GitHub and Discord for part of this code, primarily the reddit commands. THAT IS NOT MY CODE!
+
 
 acceptableImageFormats = [".png",".jpg",".jpeg",".gif",".gifv","imgur.com"]
 memeHistory = deque()
