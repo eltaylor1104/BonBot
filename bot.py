@@ -65,7 +65,7 @@ async def status(ctx):
 	members = 0
 	for guild in bot.guilds:
 		members += guild.member_count - 1
-	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f'{servers} servers, {members} members'))
+	await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name=f'{servers} servers | b!help'))
 	await ctx.message.add_reaction('✅')
 
 
