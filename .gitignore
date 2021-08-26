@@ -1,9 +1,0 @@
-.env
-__pycache__
-settings.json
-.vscode
-logs.txt
-nohup.out
-cogs/
-bot.py
-requirements.txt
