@@ -51,9 +51,9 @@ async def update(ctx):
 			bot.unload_extension(f'cogs.{filename[:-3]}')
 			bot.load_extension(f'cogs.{filename[:-3]}')
 
-@slash.event
-async def on_slash_command_error(ctx, error):
-	await ctx.send(f'{error}', ephemeral=True)
+@bot.event
+async def on_slash_command_error(interaction, error):
+	await interaction.send(f'{error}', ephemeral=True)
 
 for filename in os.listdir('./cogs'):
 	if filename.endswith('.py'):
