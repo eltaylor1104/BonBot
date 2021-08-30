@@ -2,6 +2,8 @@ Hi! I'm BonBot, a multi-purpose moderation and fun bot that utilizes slash comma
 
 Invite me: https://links.judger.xyz/bonbot
 
+[![Discord Bots](https://top.gg/api/widget/871145925425397810.svg)](https://top.gg/bot/871145925425397810)
+
 
 **About Me!**
 
